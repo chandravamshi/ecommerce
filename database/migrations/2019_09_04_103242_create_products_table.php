@@ -1,0 +1,51 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateProductsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        // Schema::disableForeignKeyConstraints();
+        Schema::create('products', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->bigInteger('brand_id')->unsigned()->index();
+            $table->string('sku');
+            $table->string('name');
+            $table->string('slug');
+            $table->text('description')->nullable();
+            $table->unsignedInteger('quantity');
+            $table->decimal('weight', 8, 2)->nullable();
+            $table->decimal('price', 8, 2)->nullable();
+            $table->decimal('sale_price', 8, 2)->nullable();
+            $table->boolean('status')->default(1);
+            $table->boolean('featured')->default(0);
+
+            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
+
+            $table->timestamps();
+        });
+        // Schema::enableForeignKeyConstraints();
+     
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        // Schema::disableForeignKeyConstraints();
+        Schema::dropIfExists('products');
+        // Schema::enableForeignKeyConstraints();
+
+    }
+}
