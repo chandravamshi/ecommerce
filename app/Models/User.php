@@ -18,6 +18,7 @@ class User extends Authenticatable
     protected $fillable = [
         'first_name', 'last_name', 'email', 'password', 'address', 'city', 'country'
     ];
+    
 
     /**
      * The attributes that should be hidden for arrays.
@@ -43,5 +44,9 @@ class User extends Authenticatable
     public function getFullNameAttribute()
     {
         return $this->first_name. ' '. $this->last_name;
+    }
+    public function orders()
+    {
+    return $this->hasMany(Order::class);
     }
 }

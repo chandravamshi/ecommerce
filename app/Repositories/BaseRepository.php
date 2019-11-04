@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
  *
  * @package \App\Repositories
  */
-class BaseRepository implements BaseContract
+class BaseRepository 
 {
     /**
      * @var Model

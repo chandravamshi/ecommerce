@@ -57,7 +57,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="value in values">
+                        <tr v-for="value in values" :key="value.id">
                             <td style="width: 25%" class="text-center">{{ value.id}}</td>
                             <td style="width: 25%" class="text-center">{{ value.value}}</td>
                             <td style="width: 25%" class="text-center">{{ value.price}}</td>
@@ -93,10 +93,12 @@
             }
         },
         created: function() {
+            console.log('a');
             this.loadValues();
         },
         methods: {
             loadValues() {
+                console.log('b');
                 let attributeId = this.attributeid;
                 let _this = this;
                 axios.post('/admin/attributes/get-values', {
@@ -104,10 +106,11 @@
                 }).then (function(response){
                     _this.values = response.data;
                 }).catch(function (error) {
-                    console.log(error);
+                    console.log(error.response);
                 });
             },
             saveValue() {
+                console.log('c');
                 if (this.value === '') {
                     this.$swal("Error, Value for attribute is required.", {
                        icon: "error",
@@ -126,7 +129,7 @@
                             icon: "success",
                         });
                     }).catch(function (error) {
-                        console.log(error);
+                        console.log(error.response);
                     });
                 }
             },
@@ -158,7 +161,7 @@
                             icon: "success",
                         });
                     }).catch(function (error) {
-                        console.log(error);
+                        console.log(error.response);
                     });
                 }
             },
@@ -187,7 +190,7 @@
                                 _this.$swal("Your attribute value not deleted!");
                             }
                         }).catch(function (error) {
-                            console.log(error);
+                            console.log(error.response);
                         });
                     } else {
                         this.$swal("Your option value not deleted!");

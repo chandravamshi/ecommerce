@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Laravel</title>
+        
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -18,6 +19,10 @@
                 font-weight: 200;
                 height: 100vh;
                 margin: 0;
+            }
+            .svg{
+                width:100px;
+                height:100px;
             }
 
             .full-height {
@@ -82,6 +87,9 @@
             <div class="content">
                 <div class="title m-b-md">
                     Laravel
+                    <img src="boy.svg" class="svg" >
+                    <!-- <svg src="/resources/boy.svg"></svg> -->
+                    
                 </div>
 
                 <div class="links">

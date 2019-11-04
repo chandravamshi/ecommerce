@@ -64,6 +64,7 @@ class ProductRepository extends BaseRepository implements ProductContract
     {
         try {
             $collection = collect($params);
+            // dd($collection);
 
             $featured = $collection->has('featured') ? 1 : 0;
             $status = $collection->has('status') ? 1 : 0;
@@ -75,6 +76,7 @@ class ProductRepository extends BaseRepository implements ProductContract
             $product->save();
 
             if ($collection->has('categories')) {
+                // dd($product->categories());
                 $product->categories()->sync($params['categories']);
             }
             return $product;
@@ -118,6 +120,13 @@ class ProductRepository extends BaseRepository implements ProductContract
 
         $product->delete();
 
+        return $product;
+    }
+
+    public function findProductBySlug($slug)
+    {
+        $product = Product::where('slug', $slug)->first();
+    
         return $product;
     }
 }
