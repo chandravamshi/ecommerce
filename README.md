@@ -1,4 +1,4 @@
-# ecommerce
+# E-Commerce Application
 
 
 A simple E-commerce Application using Laravel Framework
