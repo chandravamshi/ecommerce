@@ -1,30 +1,21 @@
-# .travis.yml
-dist: precise
-
+dist: trusty
 language: php
-
 php:
-  - 7.2
-
+- 7.2
 addons:
   mariadb: 10.4
-
 cache:
   directories:
-    - node_modules
-    - vendor
-
+  - node_modules
+  - vendor
 before_script:
-  - cp .env.travis .env
-  - sudo mysql -e 'CREATE DATABASE testing;'
-  - composer self-update
-  - composer install --no-interaction
-  - php artisan migrate --no-interaction -vvv
-
+- cp .env.travis .env
+- sudo mysql -e 'CREATE DATABASE testing;'
+- composer self-update
+- composer install --no-interaction
+- php artisan migrate --no-interaction -vvv
 script:
-  - vendor/bin/phpunit
-
-
-
-
-
+- vendor/bin/phpunit
+env:
+  global:
+    secure: GnShdrtixpk1pe+Lt/5iu7xHGaZmpqiZAM9FDAeCIxAFVaHUY0mfWY1Z5cfP41yL9+KPI7wUaLajzjmxhzEv05PJWck0rdJiRn6PBPSla5fvWOsV4oxz1j1C5UwuMy8t1og/8+KB0xsokQCJel2TQvAtpWc+KGRnEuCIQ/leTMbKeS9y6fzc2im3qJ2oktIHLAvFktdbkuzFAdrycnCirtQrVsFpt+mBRNxWDuDZnaCWkJ14xdZBNJsoC/qC0xf2Am9VpfHqQAq+te9FUtQZO0YkOcCgFCyNWzchCDwi0hAXqg0LfsFlXpAMDM3Jl0V2jdkY21BeKWS1cm6Lk4oCHKOhr22ARw9p+1K3UDvBmdIDVvMuk56ju0nq2sEUi0XAkYVOusKhlL8LGeq7EL7FsN6uKxWqvO+2EBOTDa1fcBAx3uHWSDhCaRJmpkQJSh9U4Nr7v77dDuA5ZGqaM6j+CDziMgnV5P7msceRxz0J1qfAD3YyfBNhXOTVWsA0ljexUl1zeB2dKPXmS1zRWSifYxK5SmxdaLYX7lprKdiP94YvnjbMk7yLZ95DdkCv3QLVp7b/EZ3bGqB+VoXo0jhUxsNwdgZBCNJZepeOlRxt9SpRfQnLK8NFFKLXUSgyXDr3NkTgDOadT7mEHwH7Af1XbbI/NtoCjinpGRmjeVb2Lv0=
