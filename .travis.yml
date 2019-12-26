@@ -1,33 +1,13 @@
 dist: trusty
-language: php
-php:
-  - 7.3.9
-
-before_script:
-  - cp .env.travis .env
-  - composer self-update
-  - composer install --prefer-source --no-interaction --dev
-  - php artisan key:generate
-  - php artisan jwt:generate
-  - php artisan migrate
-
-before_install:
-  - mysql -e 'CREATE DATABASE realworld_test;'
-
-services:
-  - mysql
-
-notifications:
-  email: false
-
-addons:
-  sonarcloud:
-    organization: chandravamshi
-    token:
-      secure: "VSC/niC2cOjqJL8Pjc+sCTHJNB26zRm8GCnws7ZOVkDtfxoO3JK+b5eoicnMcas0xWywO/8PsnZy/iEYKLLJAn84pGLHFCAQDdXvR5BcRIwfBYc+xEGWpJskEiVcpSdfPg+UKXR2iVJ/8+ZNwlMSEUdnQ13933WcDhlapSqU3S1Rj0bBCxwYYBAK+lh0mI+m5UHEiqTxspuejUzJ5tSQxphjaZXKy2RNU4Dab/eEz4zQqTgCd1JsmFB0c67T299MB600HPLH6GM44TgzDHNRxZY0ygSb1HUrit79gQBBfl9IS23IX9BkqQ5WImBZ1veS6u84PEz0y+iMY/BCRr+7bmMYJS1m1/uxJYFQMZCdehb2pkQo5Uuaa9YHhzuRYS+LmX3xLNEj7awZxxI3//QtkoCV1pWba9icPVIh8knsFVg3QTk9NEk+1UOlr5wKs0irbYCVcBPelcpXLZz5HcDbB3y1exFkgiR+u4NKH2TmvfHcXGN8xGA+m36vAGnFwAggnizf4qIGnRo0NouuCaqV3ora3ceRNa94qlKYZT/sVw3U3cWWHCro6FBWW0K0DeP/tAMSBXduN5f2B4R3hFb5st2EQNY02tomyOmbfOZYK+kCp/PXIRipPqZc2vwGdblCPPVJQaDYZZoWLc3BKOdKekUowQKf9hAWvr5tVJI9uyQ="
-script:
-- sonar-scanner
-- vendor/bin/phpunit
 env:
   global:
-  - secure: VSC/niC2cOjqJL8Pjc+sCTHJNB26zRm8GCnws7ZOVkDtfxoO3JK+b5eoicnMcas0xWywO/8PsnZy/iEYKLLJAn84pGLHFCAQDdXvR5BcRIwfBYc+xEGWpJskEiVcpSdfPg+UKXR2iVJ/8+ZNwlMSEUdnQ13933WcDhlapSqU3S1Rj0bBCxwYYBAK+lh0mI+m5UHEiqTxspuejUzJ5tSQxphjaZXKy2RNU4Dab/eEz4zQqTgCd1JsmFB0c67T299MB600HPLH6GM44TgzDHNRxZY0ygSb1HUrit79gQBBfl9IS23IX9BkqQ5WImBZ1veS6u84PEz0y+iMY/BCRr+7bmMYJS1m1/uxJYFQMZCdehb2pkQo5Uuaa9YHhzuRYS+LmX3xLNEj7awZxxI3//QtkoCV1pWba9icPVIh8knsFVg3QTk9NEk+1UOlr5wKs0irbYCVcBPelcpXLZz5HcDbB3y1exFkgiR+u4NKH2TmvfHcXGN8xGA+m36vAGnFwAggnizf4qIGnRo0NouuCaqV3ora3ceRNa94qlKYZT/sVw3U3cWWHCro6FBWW0K0DeP/tAMSBXduN5f2B4R3hFb5st2EQNY02tomyOmbfOZYK+kCp/PXIRipPqZc2vwGdblCPPVJQaDYZZoWLc3BKOdKekUowQKf9hAWvr5tVJI9uyQ=
+    secure: WjEBXlfyb7ZlqgDPPBScIU4VP3lU6uuQqVuoGitrt37xXI4yKPMA6P9yOH6PoHB1omc6Pf/5wA/L6Fd0/HnkwHsl7uIMGcCz1+RkrwISkwuqzS3CCyvJUP9/R4ShWkD3flZv2zG3psrZfwbNaiRtLccuHdVcM1C/C6IG1antGSVS6zTLuXOCz5H6OIZy1nUzC+JxuKKJy+qo3cB8y7txwtPTN5A7xqFtYCY9dTfDpQ93uaTNwZ8BfFUK8IjvOMh6mPEjVl7OM3QeRlIvuWWhMwvRxO5dAS+44rhgasjALQi/6MrplRPnz7T/Pd7FQ5yJdbja0tx2orXg1BG/ql+F2BlWcYYh6MMXs2xKY0pmaXQ9XjFhqUBPCAqQKq2101bAb3kgRTDChNA4UqVwANGF2x7go2OfeAk1EUYxSguZQ5vzUfOUXD/VqdIftC1bDKvw23Lzz/0SAtSmZlu3UhyvL9fwQRZHhN1m66fMdpt6dmmsrUhddttMlTxUK/AnZgPyvPb+2CSkScigFuzfxqbsDVDYAzslAHN5hp6skVQf8VdL3XDGrThuuWszNibqboMjc7vrg6ECc35FV7pVyCfnpbf6EYOmhNel1ZbNpakxBqGcD5i+KNpSCbX/W58ETaKNWrxiecO+hpwEYF+X79mjPk0+T9jomqdKG2tK+nYAYdM=
+addons:
+  sonarcloud:
+    organization: "chandravamshi"
+    token:
+      secure: "WjEBXlfyb7ZlqgDPPBScIU4VP3lU6uuQqVuoGitrt37xXI4yKPMA6P9yOH6PoHB1omc6Pf/5wA/L6Fd0/HnkwHsl7uIMGcCz1+RkrwISkwuqzS3CCyvJUP9/R4ShWkD3flZv2zG3psrZfwbNaiRtLccuHdVcM1C/C6IG1antGSVS6zTLuXOCz5H6OIZy1nUzC+JxuKKJy+qo3cB8y7txwtPTN5A7xqFtYCY9dTfDpQ93uaTNwZ8BfFUK8IjvOMh6mPEjVl7OM3QeRlIvuWWhMwvRxO5dAS+44rhgasjALQi/6MrplRPnz7T/Pd7FQ5yJdbja0tx2orXg1BG/ql+F2BlWcYYh6MMXs2xKY0pmaXQ9XjFhqUBPCAqQKq2101bAb3kgRTDChNA4UqVwANGF2x7go2OfeAk1EUYxSguZQ5vzUfOUXD/VqdIftC1bDKvw23Lzz/0SAtSmZlu3UhyvL9fwQRZHhN1m66fMdpt6dmmsrUhddttMlTxUK/AnZgPyvPb+2CSkScigFuzfxqbsDVDYAzslAHN5hp6skVQf8VdL3XDGrThuuWszNibqboMjc7vrg6ECc35FV7pVyCfnpbf6EYOmhNel1ZbNpakxBqGcD5i+KNpSCbX/W58ETaKNWrxiecO+hpwEYF+X79mjPk0+T9jomqdKG2tK+nYAYdM=" # encrypted value of your token
+
+script:
+  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+  - sonar-scanner
