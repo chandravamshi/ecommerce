@@ -1,4 +1,4 @@
-# E-Commerce Application
+# E-Commerce Application ![ecommerce](https://travis-ci.com/chandravamshi/ecommerce.svg?branch=master)
 
 
 A simple E-commerce Application using Laravel Framework
