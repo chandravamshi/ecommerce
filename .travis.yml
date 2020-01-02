@@ -14,7 +14,7 @@ services:
 addons:
   apt:
     sources:
-      - mysql-5.6-trusty
+      - mysql-5.7-trusty
     packages:
       - mysql-server
 
