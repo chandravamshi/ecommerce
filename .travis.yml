@@ -1,5 +1,6 @@
 # .travis.yml
 dist: trusty
+sudo: required
 
 language: php
 
