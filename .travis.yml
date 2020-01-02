@@ -14,7 +14,7 @@ services:
 addons:
   apt:
     sources:
-      - mysql-5.7-trusty
+      - mysql-5.6-trusty
     packages:
       - mysql-server
 
@@ -25,7 +25,7 @@ cache:
 
 before_script:
   - cp .env.travis .env
-  - sudo mysql -e 'CREATE DATABASE testing;'
+  - sudo mysql -e 'CREATE DATABASE ecommerce;'
   - composer self-update
   - composer install --no-interaction
   - php artisan migrate --no-interaction -vvv
