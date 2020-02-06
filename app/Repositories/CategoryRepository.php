@@ -82,7 +82,6 @@ class CategoryRepository extends BaseRepository implements CategoryContract
             $category = new Category($merge->all());
 
             $category->save();
-            
 
             return $category;
 
@@ -106,7 +105,7 @@ class CategoryRepository extends BaseRepository implements CategoryContract
             if ($category->image != null) {
                 $this->deleteOne($category->image);
             }
-
+    
             $image = $this->uploadOne($params['image'], 'categories');
         }
 

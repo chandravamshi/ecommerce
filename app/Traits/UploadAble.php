@@ -5,6 +5,7 @@ namespace App\Traits;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 
+
 /**
  * Trait UploadAble
  * @package App\Traits

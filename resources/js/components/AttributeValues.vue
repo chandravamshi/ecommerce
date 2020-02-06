@@ -93,12 +93,10 @@
             }
         },
         created: function() {
-            console.log('a');
             this.loadValues();
         },
         methods: {
             loadValues() {
-                console.log('b');
                 let attributeId = this.attributeid;
                 let _this = this;
                 axios.post('/admin/attributes/get-values', {
@@ -106,11 +104,10 @@
                 }).then (function(response){
                     _this.values = response.data;
                 }).catch(function (error) {
-                    console.log(error.response);
+                    console.log(error);
                 });
             },
             saveValue() {
-                console.log('c');
                 if (this.value === '') {
                     this.$swal("Error, Value for attribute is required.", {
                        icon: "error",
@@ -129,7 +126,7 @@
                             icon: "success",
                         });
                     }).catch(function (error) {
-                        console.log(error.response);
+                        console.log(error);
                     });
                 }
             },
@@ -161,7 +158,7 @@
                             icon: "success",
                         });
                     }).catch(function (error) {
-                        console.log(error.response);
+                        console.log(error);
                     });
                 }
             },
@@ -190,7 +187,7 @@
                                 _this.$swal("Your attribute value not deleted!");
                             }
                         }).catch(function (error) {
-                            console.log(error.response);
+                            console.log(error);
                         });
                     } else {
                         this.$swal("Your option value not deleted!");

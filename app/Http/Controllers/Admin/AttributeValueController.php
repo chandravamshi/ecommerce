@@ -28,14 +28,11 @@ class AttributeValueController extends Controller
 
     public function addValues(Request $request)
     {
-        // dd($request);
         $value = new AttributeValue();
         $value->attribute_id = $request->input('id');
         $value->value = $request->input('value');
         $value->price = $request->input('price');
         $value->save();
-        // dd($value);
-        
 
         return response()->json($value);
     }

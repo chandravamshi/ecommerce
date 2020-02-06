@@ -9,13 +9,6 @@
     <section class="section-content bg padding-y border-top" id="site">
         <div class="container">
             <div class="row">
-                <div class="col-sm-12">
-                    @if (Session::has('message'))
-                        <p class="alert alert-success">{{ Session::get('message') }}</p>
-                    @endif
-                </div>
-            </div>
-            <div class="row">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="row no-gutters">
@@ -75,14 +68,9 @@
                                             <div class="col-sm-12">
                                                 <dl class="dlist-inline">
                                                     @foreach($attributes as $attribute)
-                                                        @php
-                                                            if (count((array)$product->attributes) > 0) 
-                                                                $attributeCheck = in_array($attribute->id, $product->attributes->pluck('attribute_id')->toArray());
-                                                             else 
-                                                                $attributeCheck = [];
-                                                            
-                                                        @endphp
-                                                        
+                                                    @php echo($attribute) @endphp
+                                                        @php $attributeCheck = in_array($attribute->id, $product->attributes->pluck('attribute_id')->toArray()) @endphp
+                                                        @php echo($product->attributes->pluck('attribute_id')) @endphp
                                                         @if ($attributeCheck)
                                                             <dt>{{ $attribute->name }}: </dt>
                                                             <dd>
@@ -133,6 +121,15 @@
                 </div>
             </div>
         </div>
+        @foreach($product->attributes as $attributeValue)
+        @php echo($product) @endphp
+       <!-- @if ($attributeValue->attribute_id == $attribute->id)
+        <option
+        data-price="{{ $attributeValue->price }}"
+        value="{{ $attributeValue->value }}"> {{ ucwords($attributeValue->value . ' +'. $attributeValue->price) }}
+         </option>
+        @endif -->
+          @endforeach
     </section>
 @stop
 @push('scripts')
