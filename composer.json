@@ -15,6 +15,7 @@
         "laravel/tinker": "^1.0",
         "nothingworks/blade-svg": "^0.3.2",
         "paypal/rest-api-sdk-php": "^1.14",
+        "phpmd/phpmd": "^2.8",
         "typicms/nestablecollection": "^1.1"
     },
     "require-dev": {
