@@ -16,7 +16,6 @@ blocks:
             - cache store
             - cp .env.example .env
             - 'php artisan key:generate'
-            - mkdir -p database
-            - touch database/database.sqlite
-            - php artisan migrate
-            - 'php artisan db:seed'
+            - checkout
+            - cache restore
+            - ./vendor/bin/phpunit
