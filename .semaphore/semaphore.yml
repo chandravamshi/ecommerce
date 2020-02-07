@@ -5,23 +5,18 @@ agent:
     type: e1-standard-2
     os_image: ubuntu1804
 blocks:
-  - name: Test
+  - name: install dependencies
     task:
       jobs:
-        - name: Test
+        - name: composer
           commands:
             - checkout
-            - cache restore
             - composer install
             - composer update
-            - cache store
+            - npm install
+            - 'export "PATH=./vendor/bin:${PATH}"'
             - cp .env.example .env
             - 'php artisan key:generate'
-            - mkdir -p database
-            - touch database/database.sqlite
-            - 'php artisan config:cache'
-            - 'php artisan config:clear'
-            - 'php artisan cache:clear'
-            - php artisan migrate
-            - 'php artisan db:seed'
-            - ./vendor/bin/phpunit
+      env_vars:
+        - name: APP_ENV
+          value: prod
