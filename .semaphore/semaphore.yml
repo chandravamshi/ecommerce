@@ -19,3 +19,6 @@ blocks:
             - checkout
             - cache restore
             - ./vendor/bin/phpunit
+      env_vars:
+        - name: APP_ENV
+          value: local
