@@ -24,4 +24,4 @@ blocks:
             - ./vendor/bin/phpunit
       env_vars:
         - name: APP_ENV
-          value: prod
+          value: Laravel
