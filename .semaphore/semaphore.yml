@@ -27,9 +27,6 @@ blocks:
           - checkout
           - cache restore
       jobs:
-        - name: phpmd
-          commands:
-            - php vendor/bin/phpmd app/ text phpmd_ruleset.xml
         - name: phpcpd
           commands:
             - 'curl -L https://phar.phpunit.de/phpcpd.phar -o phpcpd.phar'
