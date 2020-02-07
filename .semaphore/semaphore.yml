@@ -18,6 +18,9 @@ blocks:
             - 'php artisan key:generate'
             - mkdir -p database
             - touch database/database.sqlite
+            - 'php artisan config:cache'
+            - 'php artisan config:clear'
+            - 'php artisan cache:clear'
             - php artisan migrate
             - 'php artisan db:seed'
             - ./vendor/bin/phpunit
