@@ -14,6 +14,7 @@ blocks:
             - cache restore
             - composer install
             - cache store
+            - composer update
             - cp .env.example .env
             - 'php artisan key:generate'
             - 'php artisan config:cache'
@@ -21,4 +22,6 @@ blocks:
             - ./vendor/bin/phpunit
       env_vars:
         - name: APP_ENV
-          value: production
+          value: local
+        - name: DB_DATABASE
+          value: ecommerce
