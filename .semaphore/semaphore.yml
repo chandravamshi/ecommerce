@@ -17,6 +17,7 @@ blocks:
             - 'export "PATH=./vendor/bin:${PATH}"'
             - cp .env.example .env
             - 'php artisan key:generate'
+            - ./vendor/bin/phpunit
       env_vars:
         - name: APP_ENV
           value: prod
@@ -38,10 +39,6 @@ blocks:
           commands:
             - checkout
             - cache restore
-            - ./vendor/bin/phpunit
-      prologue:
-        commands:
-          - 'php artisan key:generate'
   - name: Run Browser tests
     task:
       jobs:
