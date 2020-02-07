@@ -4,6 +4,7 @@ agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu1804
+
 blocks:
   - name: Test
     task:
@@ -13,28 +14,9 @@ blocks:
             - checkout
             - cache restore
             - composer install
-            - npm install
             - cache store
             - cp .env.example .env
-            - touch ecommerce.mysql
-            - 'php artisan config:cache'
-            - 'php artisan key:generate'
-            - 'php artisan config:cache'
-            - php artisan migrate
-      env_vars:
-        - name: APP_NAME
-          value: Laravel
-        - name: APP_ENV
-          value: local
-        - name: DB_CONNECTION
-          value: mysql
-        - name: DB_HOST
-          value: 127.0.0.1
-        - name: DB_PORT
-          value: '3306'
-        - name: DB_DATABASE
-          value: ecommerce
-        - name: DB_USERNAME
-          value: root
-        - name: DB_PASSWORD
-          value: ''
+            - php artisan key:generate
+            - mkdir -p database
+            - touch database/database.sqlite
+            - ./vendor/bin/phpunit
