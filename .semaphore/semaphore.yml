@@ -13,6 +13,7 @@ blocks:
             - checkout
             - cache restore
             - composer install
+            - composer update
             - cache store
             - cp .env.example .env
             - 'php artisan key:generate'
