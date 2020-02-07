@@ -17,6 +17,7 @@ blocks:
             - 'export "PATH=./vendor/bin:${PATH}"'
             - cp .env.example .env
             - 'php artisan key:generate'
+            - php artisan serve
             - ./vendor/bin/phpunit
       env_vars:
         - name: APP_ENV
