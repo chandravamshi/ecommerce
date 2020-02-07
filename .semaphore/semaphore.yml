@@ -24,3 +24,5 @@ blocks:
       env_vars:
         - name: APP_NAME
           value: Laravel
+        - name: APP_ENV
+          value: local
