@@ -22,6 +22,6 @@ blocks:
             - ./vendor/bin/phpunit
       env_vars:
         - name: APP_ENV
-          value: local
+          value: production
         - name: DB_DATABASE
           value: ecommerce
