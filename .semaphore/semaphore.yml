@@ -16,8 +16,8 @@ blocks:
             - cache store
             - cp .env.example .env
             - 'php artisan key:generate'
-            - checkout
-            - cache restore
+            - 'php artisan config:cache'
+            - php artisan migrate
             - ./vendor/bin/phpunit
       env_vars:
         - name: APP_ENV
