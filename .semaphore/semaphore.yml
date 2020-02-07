@@ -20,3 +20,51 @@ blocks:
       env_vars:
         - name: APP_ENV
           value: prod
+  - name: Run Code Analysis
+    task:
+      prologue:
+        commands:
+          - checkout
+          - cache restore
+      jobs:
+        - name: phpmd
+          commands:
+            - php vendor/bin/phpmd app/ text phpmd_ruleset.xml
+        - name: phpcs
+          commands:
+            - php vendor/bin/phpcs app --report-full --standard=PSR2
+        - name: phpcpd
+          commands:
+            - 'curl -L https://phar.phpunit.de/phpcpd.phar -o phpcpd.phar'
+            - php phpcpd.phar app/ --min-lines=50
+  - name: Run Unit tests
+    task:
+      jobs:
+        - name: phpunit
+          commands:
+            - checkout
+            - cache restore
+            - ./vendor/bin/phpunit
+  - name: Run Browser tests
+    task:
+      jobs:
+        - name: laravel dusk
+          commands:
+            - checkout
+            - cp .env.example .env
+            - touch database/database.sqlite
+            - cache restore
+            - 'php artisan key:generate'
+            - 'php artisan dusk:update --detect'
+            - php artisan serve --env=dusk.local --port=8010 &
+            - php artisan dusk
+  - name: Run Security Tests
+    task:
+      jobs:
+        - name: sensiolabs
+          commands:
+            - checkout
+            - 'git clone https://github.com/sensiolabs/security-checker.git'
+            - cd security-checker
+            - composer install
+            - 'php security-checker security:check ../composer.lock'
