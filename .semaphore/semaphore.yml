@@ -13,12 +13,14 @@ blocks:
             - checkout
             - cache restore
             - composer install
+            - npm install
             - cache store
             - cp .env.example .env
             - 'php artisan key:generate'
             - mkdir -p database
-            - touch database/database.sqlite
+            - touch database/database.mysql
+            - php artisan migrate
             - ./vendor/bin/phpunit
       env_vars:
         - name: APP_ENV
-          value: production
+          value: prod
