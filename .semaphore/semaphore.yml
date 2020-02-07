@@ -17,11 +17,7 @@ blocks:
             - cache store
             - cp .env.example .env
             - 'php artisan key:generate'
-            - mkdir -p database
-            - touch database/database.mysql
-            - 'php artisan config:cache'
             - php artisan migrate
-            - ./vendor/bin/phpunit
       env_vars:
-        - name: APP_ENV
+        - name: APP_NAME
           value: Laravel
