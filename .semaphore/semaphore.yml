@@ -4,7 +4,6 @@ agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu1804
-
 blocks:
   - name: Test
     task:
@@ -16,7 +15,10 @@ blocks:
             - composer install
             - cache store
             - cp .env.example .env
-            - php artisan key:generate
+            - 'php artisan key:generate'
             - mkdir -p database
             - touch database/database.sqlite
             - ./vendor/bin/phpunit
+      env_vars:
+        - name: APP_ENV
+          value: production
