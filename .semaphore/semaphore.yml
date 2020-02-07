@@ -16,6 +16,8 @@ blocks:
             - npm install
             - cache store
             - cp .env.example .env
+            - touch ecommerce.mysql
+            - 'php artisan config:cache'
             - 'php artisan key:generate'
             - 'php artisan config:cache'
             - php artisan migrate
