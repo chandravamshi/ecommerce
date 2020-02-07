@@ -18,10 +18,12 @@ blocks:
             - cp .env.example .env
             - 'php artisan key:generate'
             - 'php artisan config:cache'
+            - Composer update
+            - sudo apt-get update
+            - sudo apt-get install mysql-server
+            - sudo systemctl start mysql
             - php artisan migrate
             - ./vendor/bin/phpunit
       env_vars:
         - name: APP_ENV
-          value: production
-        - name: DB_DATABASE
-          value: ecommerce
+          value: local
