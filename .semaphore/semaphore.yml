@@ -15,10 +15,6 @@ blocks:
             - composer update
             - npm install
             - 'export "PATH=./vendor/bin:${PATH}"'
-            - cp .env.example .env
-            - 'php artisan key:generate'
-            - php artisan serve
-            - ./vendor/bin/phpunit
       env_vars:
         - name: APP_ENV
           value: prod
@@ -39,7 +35,14 @@ blocks:
         - name: phpunit
           commands:
             - checkout
+            - cp .env.example .env
+            - touch database/database.sqlite
             - cache restore
+            - 'php artisan key:generate'
+            - 'php artisan dusk:update --detect '
+            - php artisan serve --env=dusk.local --port=8010 &
+            - ./vendor/bin/phpunit
+            - php artisan dusk
   - name: Run Browser tests
     task:
       jobs:
