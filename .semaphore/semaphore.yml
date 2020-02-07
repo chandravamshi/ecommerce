@@ -17,7 +17,6 @@ blocks:
             - 'export "PATH=./vendor/bin:${PATH}"'
             - cp .env.example .env
             - 'php artisan key:generate'
-            - phpunit --coverage-text --colors=never
       env_vars:
         - name: APP_ENV
           value: prod
