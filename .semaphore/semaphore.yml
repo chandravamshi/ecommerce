@@ -24,7 +24,7 @@ blocks:
 
 blocks:
  - name: "Run Code Analysis"
-    task:
+   task:
       prologue:
         commands:
           - checkout
