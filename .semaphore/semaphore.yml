@@ -18,7 +18,7 @@ blocks:
             - cp .env.example .env
             - 'php artisan key:generate'
             - mkdir -p ecommerce
-            - touch ecommerce/database.mysql
+            - touch ecommerce/ecommerce.mysql
             - 'php artisan config:cache'
             - php artisan migrate
       env_vars:
