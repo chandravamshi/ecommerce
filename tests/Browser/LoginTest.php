@@ -17,32 +17,43 @@ class LoginTest extends DuskTestCase
      * @return void
      * @throws \Throwable
      */
-    public function testUserCanLogIn()
-    {
-        $user = factory(User::class)->create([
-            'email' => 'test@semaphore.com',
-            'first_name' => 'Test Account',
-            'password' => bcrypt('123456')
-        ]);
 
-        $this->browse(function (Browser $browser) {
-            $browser->visit('/login')
-                    ->type('email', 'test@semaphore.com')
-                    ->type('password', '123456')
-                    ->click('#login-button')
-                    ->assertSee('Welcome, Test Account');
-        });
-    }
 
-    public function testUserCannotLoginWithoutAccount()
+    public function testpageLoad()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/login')
-                ->type('email', 'test@semaphore.com')
-                ->type('password', '123456')
-                ->click('#login-button')
-                ->assertSee('These credentials do not match our records.');
+            $browser->visit('/admin')
+                    ->assertSee('SIGN IN')
+                    ->assertStatus(200);
         });
+        
     }
+    // public function testUserCanLogIn()
+    // {
+    //     $user = factory(User::class)->create([
+    //         'email' => 'test@semaphore.com',
+    //         'first_name' => 'Test Account',
+    //         'password' => bcrypt('123456')
+    //     ]);
+
+    //     $this->browse(function (Browser $browser) {
+    //         $browser->visit('/login')
+    //                 ->type('email', 'test@semaphore.com')
+    //                 ->type('password', '123456')
+    //                 ->click('#login-button')
+    //                 ->assertSee('Welcome, Test Account');
+    //     });
+    // }
+
+    // public function testUserCannotLoginWithoutAccount()
+    // {
+    //     $this->browse(function (Browser $browser) {
+    //         $browser->visit('/login')
+    //             ->type('email', 'test@semaphore.com')
+    //             ->type('password', '123456')
+    //             ->click('#login-button')
+    //             ->assertSee('These credentials do not match our records.');
+    //     });
+    // }
 
 }
