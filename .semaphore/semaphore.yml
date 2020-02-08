@@ -11,12 +11,14 @@ blocks:
         - name: composer
           commands:
             - checkout
+            - cache restore
             - composer install
             - composer ins
             - composer up
             - 'php artisan dusk:install'
             - npm install
             - 'export "PATH=./vendor/bin:${PATH}"'
+            - cache store
       env_vars:
         - name: APP_ENV
           value: prod
@@ -45,7 +47,6 @@ blocks:
             - cache restore
             - 'php artisan key:generate'
             - php artisan serve --env=dusk.local --port=8010 &
-            - 'php artisan dusk:install'
             - php artisan dusk
     dependencies:
       - Run Code Analysis
