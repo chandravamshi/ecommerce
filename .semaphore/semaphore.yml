@@ -46,6 +46,8 @@ blocks:
             - touch database/database.mysql
             - cache restore
             - 'php artisan key:generate'
+            - php artisan migrate
+            - 'php artisan db:seed'
             - php artisan serve --env=dusk.local --port=8010 &
             - ./vendor/bin/phpunit
       env_vars:
