@@ -48,6 +48,9 @@ blocks:
             - 'php artisan key:generate'
             - php artisan serve --env=dusk.local --port=8010 &
             - php artisan dusk
+      env_vars:
+        - name: APP_ENV
+          value: local
     dependencies:
       - Run Code Analysis
   - name: Run Browser tests
