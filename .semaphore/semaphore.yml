@@ -12,7 +12,6 @@ blocks:
           commands:
             - checkout
             - composer install
-            - composer require --dev laravel/dusk
             - composer update
             - npm install
             - 'export "PATH=./vendor/bin:${PATH}"'
