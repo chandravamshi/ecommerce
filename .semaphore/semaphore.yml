@@ -12,6 +12,8 @@ blocks:
           commands:
             - checkout
             - composer install
+            - composer ins
+            - composer up
             - composer require --dev laravel/dusk
             - 'php artisan dusk:install'
             - npm install
