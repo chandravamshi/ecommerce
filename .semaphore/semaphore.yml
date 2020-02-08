@@ -43,7 +43,7 @@ blocks:
           commands:
             - checkout
             - cp .env.example .env
-            - touch database/database.sqlite
+            - touch database/database.mysql
             - cache restore
             - 'php artisan key:generate'
             - php artisan serve --env=dusk.local --port=8010 &
@@ -51,6 +51,12 @@ blocks:
       env_vars:
         - name: APP_ENV
           value: local
+        - name: DB_DATABASE
+          value: ecommerce
+        - name: DB_USERNAME
+          value: root
+        - name: DB_PASSWORD
+          value: ''
     dependencies:
       - Run Code Analysis
   - name: Run Browser tests
