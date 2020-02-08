@@ -42,7 +42,6 @@ blocks:
             - touch database/database.sqlite
             - cache restore
             - 'php artisan key:generate'
-            - 'php artisan dusk:update --detect '
             - php artisan serve --env=dusk.local --port=8010 &
             - ./vendor/bin/phpunit
             - php artisan dusk
