@@ -47,7 +47,7 @@ blocks:
             - cache restore
             - 'php artisan key:generate'
             - php artisan serve --env=dusk.local --port=8010 &
-            - ./vendor/bin/phpunit
+            - php artisan dusk
       env_vars:
         - name: APP_ENV
           value: local
