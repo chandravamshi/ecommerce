@@ -15,7 +15,7 @@ class CreateProductsTable extends Migration
     {
         // Schema::disableForeignKeyConstraints();
         Schema::create('products', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->bigInteger('brand_id')->unsigned()->index();
             $table->string('sku');
             $table->string('name');

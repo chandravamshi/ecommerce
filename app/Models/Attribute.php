@@ -18,9 +18,10 @@ class Attribute extends Model
     /**
      * @var array
      */
-    protected $fillable = [
-        'code', 'name', 'frontend_type', 'is_filterable', 'is_required'
-    ];
+    // protected $fillable = [
+    //     'code', 'name', 'frontend_type', 'is_filterable', 'is_required'
+    // ];
+    protected $guarded = [];
 
     /**
      * @var array

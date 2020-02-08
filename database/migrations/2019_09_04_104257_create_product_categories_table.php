@@ -14,11 +14,16 @@ class CreateProductCategoriesTable extends Migration
     public function up()
     {
         Schema::create('product_categories', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->bigInteger('category_id')->unsigned()->index();
-            $table->foreign('category_id')->references('id')->on('categories');
-            $table->bigInteger('product_id')->unsigned()->index();
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->increments('id',true);
+            $table->integer('category_id')->unsigned();
+            // $table->foreign('category_id')->references('id')->on('categories');
+            $table->integer('product_id')->unsigned();
+            // $table->foreign('product_id')->references('id')->on('products');
+        });
+        Schema::table('product_categories', function($table) {
+            // $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 

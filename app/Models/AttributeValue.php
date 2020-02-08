@@ -14,9 +14,10 @@ class AttributeValue extends Model
     /**
      * @var array
      */
-    protected $fillable = [
-        'attribute_id', 'value', 'price'
-    ];
+    // protected $fillable = [
+    //     'attribute_id', 'value', 'price'
+    // ];
+    protected $guarded = [];
 
     /**
      * @var array

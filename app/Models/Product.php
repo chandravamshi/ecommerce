@@ -15,10 +15,11 @@ class Product extends Model
     /**
      * @var array
      */
-    protected $fillable = [
-        'brand_id', 'sku', 'name', 'slug', 'description', 'quantity',
-        'weight', 'price', 'sale_price', 'status', 'featured',
-    ];
+    // protected $fillable = [
+    //     'brand_id', 'sku', 'name', 'slug', 'description', 'quantity',
+    //     'weight', 'price', 'sale_price', 'status', 'featured',
+    // ];
+    protected $guarded = [];
 
     /**
      * @var array
