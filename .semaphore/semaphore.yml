@@ -12,6 +12,7 @@ blocks:
           commands:
             - checkout
             - composer install
+            - composer require --dev laravel/dusk
             - composer update
             - npm install
             - 'export "PATH=./vendor/bin:${PATH}"'
@@ -30,7 +31,8 @@ blocks:
           commands:
             - 'curl -L https://phar.phpunit.de/phpcpd.phar -o phpcpd.phar'
             - php phpcpd.phar app/ --min-lines=50
-    dependencies: []
+    dependencies:
+      - install dependencies
   - name: Run Unit tests
     task:
       jobs:
@@ -46,7 +48,8 @@ blocks:
             - php artisan serve --env=dusk.local --port=8010 &
             - ./vendor/bin/phpunit
             - php artisan dusk
-    dependencies: []
+    dependencies:
+      - Run Code Analysis
   - name: Run Browser tests
     task:
       jobs:
