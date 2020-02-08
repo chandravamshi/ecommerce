@@ -46,7 +46,7 @@ blocks:
             - touch database/database.mysql
             - cache restore
             - 'php artisan key:generate'
-            - php artisan serve
+            - php artisan serve --env=dusk.local --port=8010 &
             - php artisan dusk
       env_vars:
         - name: APP_ENV
