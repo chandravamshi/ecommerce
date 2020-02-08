@@ -13,7 +13,6 @@ blocks:
             - checkout
             - composer install
             - composer require --dev laravel/dusk
-            - composer update
             - 'php artisan dusk:install'
             - npm install
             - 'export "PATH=./vendor/bin:${PATH}"'
