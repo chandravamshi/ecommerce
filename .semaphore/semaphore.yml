@@ -14,7 +14,6 @@ blocks:
             - composer install
             - composer ins
             - composer up
-            - composer require --dev laravel/dusk
             - 'php artisan dusk:install'
             - npm install
             - 'export "PATH=./vendor/bin:${PATH}"'
