@@ -33,7 +33,7 @@ blocks:
             - sudo apt-get install -y -qq mysql-client
             - mysql --host=0.0.0.0 -uroot -e "create database $DB_NAME"
             - mysql --host=0.0.0.0 -uroot -e "show databases" | grep $DB_NAME
-            - sem-service start mysql
+            - php artisan migrate
             - ./vendor/bin/phpunit
       env_vars:
         - name: DB_NAME
