@@ -27,24 +27,17 @@ blocks:
       jobs:
         - name: create database
           commands:
+            - checkout
+            - cache restore
             - sem-service start mysql
             - sudo apt-get install -y -qq mysql-client
             - mysql --host=0.0.0.0 -uroot -e "create database $DB_NAME"
             - mysql --host=0.0.0.0 -uroot -e "show databases" | grep $DB_NAME
-            - sem-service status mysql
-        - name: php unit
-          commands:
-            - checkout
-            - cache restore
             - sem-service start mysql
             - ./vendor/bin/phpunit
       env_vars:
         - name: DB_NAME
           value: forge
-        - name: DB_USERNAME
-          value: root
-        - name: DB_PASSWORD
-          value: ''
     dependencies:
       - Install Dependencies
   - name: Run Browser tests
