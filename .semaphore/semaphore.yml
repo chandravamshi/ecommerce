@@ -5,7 +5,7 @@ agent:
     type: e1-standard-2
     os_image: ubuntu1804
 blocks:
-  - name: Install Dependencies
+  - name: Installing  Dependencies
     task:
       env_vars:
         - name: APP_ENV
@@ -22,10 +22,10 @@ blocks:
             - cp .env.example .env
             - 'php artisan key:generate'
     dependencies: []
-  - name: Run Unit tests
+  - name: Unit tests
     task:
       jobs:
-        - name: create database
+        - name: unit test with user
           commands:
             - checkout
             - cache restore
@@ -42,7 +42,7 @@ blocks:
         - name: APP_ENV
           value: local
     dependencies:
-      - Install Dependencies
+      - Code Analysis
   - name: Run Security Tests
     task:
       jobs:
@@ -54,4 +54,13 @@ blocks:
             - composer install
             - 'php security-checker security:check ../composer.lock'
     dependencies:
-      - Run Unit tests
+      - Unit tests
+  - name: Code Analysis
+    dependencies:
+      - Installing  Dependencies
+    task:
+      jobs:
+        - name: phpcpd
+          commands:
+            - 'curl -L https://phar.phpunit.de/phpcpd.phar -o phpcpd.phar'
+            - php phpcpd.phar app/ --min-lines=50
