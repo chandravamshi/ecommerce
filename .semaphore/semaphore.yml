@@ -54,7 +54,7 @@ blocks:
             - composer install
             - 'php security-checker security:check ../composer.lock'
     dependencies:
-      - Unit tests
+      - Run Browser tests
   - name: Code Analysis
     dependencies:
       - Installing  Dependencies
@@ -69,3 +69,21 @@ blocks:
         commands:
           - checkout
           - cache restore
+  - name: Run Browser tests
+    dependencies:
+      - Unit tests
+    task:
+      env_vars:
+        - name: APP_ENV
+          value: local
+      jobs:
+        - name: laravel dusk
+          commands:
+            - checkout
+            - cp .env.example .env
+            - cache restore
+            - 'php artisan key:generate'
+            - 'composer require --dev staudenmeir/dusk-updater:"^1.1"'
+            - 'php artisan dusk:update --detect'
+            - php artisan serve
+            - php artisan dusk
