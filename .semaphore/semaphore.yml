@@ -14,7 +14,7 @@ blocks:
             - checkout
             - cache restore
             - sudo apt-get update && sudo apt-get install -y libpq-dev
-            - composer install
+            - composer install --no-dev
             - npm install
             - cache store
             - cp .env.example .env
