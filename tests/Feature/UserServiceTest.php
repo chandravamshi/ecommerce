@@ -18,31 +18,31 @@ class UserServiceTest extends TestCase
      *
      * @return void
      */
-    // public function testItCanInstantiateUserService()
-    // {
-    //     $this->assertInstanceOf(UserService::class, app()->make(UserService::class));
-    // }
+    public function testItCanInstantiateUserService()
+    {
+        $this->assertInstanceOf(UserService::class, app()->make(UserService::class));
+    }
 
-    // public function testItCanCreateUser()
-    // {
-    //     $service = app()->make(UserService::class);
-    //     $fakeData = $this->fakeUserData();
-    //     $user = $service->createUser($fakeData);
-    //     $this->assertNotEmpty($user->id);
-    //     // echo($user->name);
-    //     // $this->assertEquals($user->name, $fakeData['first_name']);
-    //     $this->assertEquals($user->email, $fakeData['email']);
-    // }
+    public function testItCanCreateUser()
+    {
+        $service = app()->make(UserService::class);
+        $fakeData = $this->fakeUserData();
+        $user = $service->createUser($fakeData);
+        $this->assertNotEmpty($user->id);
+        // echo($user->name);
+        // $this->assertEquals($user->name, $fakeData['first_name']);
+        $this->assertEquals($user->email, $fakeData['email']);
+    }
 
     public function testItCanUpdateUser()
     {
-        $createdUser = $this->createUser();
+        $createdUser  = User::first();
         $service = app()->make(UserService::class);
         $serviceResponse = $service->updateUser($createdUser, [
            'email' => 'new@email.com'
         ]);
         $this->assertTrue($serviceResponse);
-        $updatedUser = User::where('id', 1)->first();
+        $updatedUser = User::first();
         // $this->assertEquals($updatedUser->name, 'updated name');
         $this->assertEquals($updatedUser->email, 'new@email.com');
         $this->assertEquals($updatedUser->id, $createdUser->id);
@@ -50,12 +50,12 @@ class UserServiceTest extends TestCase
 
     public function testItCanDeleteUser()
     {
-        $createdUser = $this->createUser();
+        $createdUser = User::first();
         $service = app()->make(UserService::class);
         // $updatedUser = User::where('id', 2)->first();
         $serviceResponse = $service->deleteUser($createdUser, ['email' => 'new@email.com']);
         $this->assertTrue($serviceResponse);
-        $this->assertCount(1, User::all());
+        $this->assertCount(0, User::all());
     }
 
 
