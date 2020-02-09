@@ -74,16 +74,17 @@ blocks:
       - Unit tests
     task:
       env_vars:
-        - name: APP_ENV
-          value: local
         - name: DB_NAME
           value: ecommerce
+        - name: 'APP_ENV '
+          value: 'local '
       jobs:
         - name: laravel dusk
           commands:
             - checkout
             - cp .env.example .env
             - cache restore
+            - 'php artisan key:generate'
             - sem-service start mysql
             - sudo apt-get install -y -qq mysql-client
             - mysql --host=0.0.0.0 -uroot -e "create database $DB_NAME"
