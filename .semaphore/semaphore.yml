@@ -78,6 +78,8 @@ blocks:
           value: local
         - name: DB_NAME
           value: ecommerce
+        - name: APP_URL
+          value: 'http://localhost:8000'
       jobs:
         - name: laravel dusk
           commands:
