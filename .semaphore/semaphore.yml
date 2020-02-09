@@ -38,7 +38,7 @@ blocks:
             - cache store
       env_vars:
         - name: DB_NAME
-          value: forge
+          value: ecommerce
         - name: APP_ENV
           value: local
     dependencies:
