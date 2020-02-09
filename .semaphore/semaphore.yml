@@ -51,18 +51,6 @@ blocks:
       env_vars:
         - name: APP_ENV
           value: local
-        - name: DB_CONNECTION
-          value: mysql
-        - name: DB_HOST
-          value: localhost
-        - name: DB_PORT
-          value: '3306'
-        - name: DB_DATABASE
-          value: ecommerce
-        - name: DB_USERNAME
-          value: root
-        - name: DB_PASSWORD
-          value: ''
     dependencies:
       - Run Code Analysis
   - name: Run Browser tests
