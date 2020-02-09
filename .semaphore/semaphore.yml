@@ -76,12 +76,19 @@ blocks:
       env_vars:
         - name: APP_ENV
           value: local
+        - name: DB_NAME
+          value: ecommerce
       jobs:
         - name: laravel dusk
           commands:
             - checkout
             - cp .env.example .env
             - cache restore
+            - sem-service start mysql
+            - sudo apt-get install -y -qq mysql-client
+            - mysql --host=0.0.0.0 -uroot -e "create database $DB_NAME"
+            - mysql --host=0.0.0.0 -uroot -e "show databases" | grep $DB_NAME
+            - 'php artisan migrate:fresh'
             - 'php artisan key:generate'
             - 'php artisan dusk:install'
             - 'php artisan dusk:chrome-driver 79'
