@@ -21,9 +21,6 @@ blocks:
             - cache store
             - cp .env.example .env
             - 'php artisan key:generate'
-        - name: everything
-          commands:
-            - codecept run
   - name: Run Unit tests
     task:
       jobs:
