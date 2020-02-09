@@ -43,13 +43,9 @@ blocks:
           commands:
             - checkout
             - cp .env.example .env
-            - touch database.mysql
+            - touch database/database.sqlite
             - cache restore
             - 'php artisan key:generate'
-            - sudo mkdir /var/mysql
-            - cd /var/mysql
-            - sudo ln -s /var/mysql/mysql.sock
-            - checkout
             - ./vendor/bin/phpunit
       env_vars:
         - name: APP_ENV
