@@ -32,7 +32,6 @@ blocks:
             - mysql --host=0.0.0.0 -uroot -e "create database $DB_NAME"
             - mysql --host=0.0.0.0 -uroot -e "show databases" | grep $DB_NAME
             - 'php artisan migrate:fresh'
-            - 'php artisan db:seed'
             - ./vendor/bin/phpunit
       env_vars:
         - name: DB_NAME
