@@ -55,9 +55,9 @@ class UserService
      * @return bool|null
      * @throws \Exception
      */
-    public function deleteUser(User $user) : bool
+    public function deleteUser(User $user,array $data) : bool
     {
-        return $user->delete();
+        return $user->delete($data);
     }
 
     /**
