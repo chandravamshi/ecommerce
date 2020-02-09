@@ -49,6 +49,8 @@ blocks:
         - name: laravel dus
           commands:
             - checkout
+            - cp .env.example .env
+            - touch database/database.sqlite
             - cache restore
             - sem-service start mysql
             - sudo apt-get install -y -qq mysql-client
@@ -57,6 +59,7 @@ blocks:
             - 'php artisan migrate:fresh'
             - 'php artisan dusk:install '
             - 'php artisan dusk:chrome-driver '
+            - php artisan serve --env=dusk.local --port=8010 &
             - php artisan dusk
       env_vars:
         - name: DB_NAME
