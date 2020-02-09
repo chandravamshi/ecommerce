@@ -22,6 +22,14 @@ blocks:
       env_vars:
         - name: APP_ENV
           value: prod
+        - name: DB_HOST
+          value: localhost
+        - name: DB_DATABASE
+          value: ecommerce
+        - name: DB_USERNAME
+          value: root
+        - name: DB_PASSWORD
+          value: ''
     dependencies: []
   - name: Run Code Analysis
     task:
@@ -49,10 +57,8 @@ blocks:
             - start mysql
             - ./vendor/bin/phpunit
       env_vars:
-        - name: APP_ENV
-          value: local
         - name: DB_CONNECTION
-          value: mysql
+          value: localhost
         - name: DB_HOST
           value: 127.0.0.1
         - name: DB_PORT
