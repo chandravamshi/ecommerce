@@ -7,14 +7,16 @@ agent:
 blocks:
   - name: Install Dependencies
     task:
-      env_vars: []
+      env_vars:
+        - name: APP_ENV
+          value: local
       jobs:
         - name: composer
           commands:
             - checkout
             - cache restore
             - sudo apt-get update && sudo apt-get install -y libpq-dev
-            - composer install --no-dev
+            - 'composer install '
             - npm install
             - cache store
             - cp .env.example .env
@@ -33,6 +35,7 @@ blocks:
             - mysql --host=0.0.0.0 -uroot -e "show databases" | grep $DB_NAME
             - 'php artisan migrate:fresh'
             - ./vendor/bin/phpunit
+            - cache store
       env_vars:
         - name: DB_NAME
           value: forge
@@ -46,6 +49,7 @@ blocks:
         - name: laravel dus
           commands:
             - checkout
+            - cache restore
             - cp .env.example .env
             - touch database/database.sqlite
             - cache restore
@@ -53,6 +57,11 @@ blocks:
             - 'php artisan dusk:update --detect'
             - php artisan serve --env=dusk.local --port=8010 &
             - php artisan dusk
+      env_vars:
+        - name: APP_ENV
+          value: local
+        - name: DB_NAME
+          value: forge
     dependencies:
       - Run Unit tests
   - name: Run Security Tests
