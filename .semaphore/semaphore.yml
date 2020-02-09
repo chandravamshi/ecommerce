@@ -42,17 +42,9 @@ blocks:
         - name: phpunit
           commands:
             - checkout
-            - cp .env.example .env
-            - touch database/database.sqlite
             - cache restore
-            - 'php artisan key:generate'
-            - start mysql
             - ./vendor/bin/phpunit
-      env_vars:
-        - name: APP_ENV
-          value: local
-        - name: DB_CONNECTION
-          value: sqlite
+      env_vars: []
     dependencies:
       - Run Code Analysis
   - name: Run Browser tests
