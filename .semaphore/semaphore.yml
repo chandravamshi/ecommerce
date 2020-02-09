@@ -7,16 +7,14 @@ agent:
 blocks:
   - name: Install Dependencies
     task:
-      env_vars:
-        - name: APP_ENV
-          value: local
+      env_vars: []
       jobs:
         - name: composer
           commands:
             - checkout
             - cache restore
             - sudo apt-get update && sudo apt-get install -y libpq-dev
-            - composer install
+            - composer install --no-dev
             - npm install
             - cache store
             - cp .env.example .env
@@ -33,6 +31,8 @@ blocks:
             - sudo apt-get install -y -qq mysql-client
             - mysql --host=0.0.0.0 -uroot -e "create database $DB_NAME"
             - mysql --host=0.0.0.0 -uroot -e "show databases" | grep $DB_NAME
+            - 'php artisan migrate:fresh'
+            - 'php artisan db:seed'
             - ./vendor/bin/phpunit
       env_vars:
         - name: DB_NAME
