@@ -9,14 +9,14 @@ blocks:
     task:
       env_vars:
         - name: APP_ENV
-          value: local
+          value: prod
       jobs:
         - name: composer
           commands:
             - checkout
             - cache restore
             - sudo apt-get update && sudo apt-get install -y libpq-dev
-            - 'composer install '
+            - composer install
             - npm install
             - cache store
             - cp .env.example .env
