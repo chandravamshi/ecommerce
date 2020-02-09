@@ -31,12 +31,11 @@ blocks:
             - checkout
             - cache restore
             - cp .env.example .env
-            - touch database/database.sqlite
             - 'php artisan key:generate'
             - ./vendor/bin/phpunit
       env_vars:
-        - name: DB_CONNECTION
-          value: sqlite
+        - name: APP_ENV
+          value: local
     dependencies:
       - install dependencies
   - name: Run Browser tests
