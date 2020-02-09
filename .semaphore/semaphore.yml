@@ -15,11 +15,15 @@ blocks:
           commands:
             - checkout
             - cache restore
+            - sudo apt-get update && sudo apt-get install -y libpq-dev
             - composer install
             - npm install
             - cache store
             - cp .env.example .env
             - 'php artisan key:generate'
+        - name: everything
+          commands:
+            - codecept run
   - name: Run Unit tests
     task:
       jobs:
