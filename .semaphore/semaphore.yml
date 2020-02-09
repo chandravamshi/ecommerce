@@ -15,6 +15,8 @@ blocks:
             - composer install
             - composer ins
             - composer up
+            - cp .env.example .env
+            - 'php artisan key:generate'
             - 'php artisan dusk:install'
             - npm install
             - 'export "PATH=./vendor/bin:${PATH}"'
@@ -30,12 +32,8 @@ blocks:
           commands:
             - checkout
             - cache restore
-            - cp .env.example .env
-            - 'php artisan key:generate'
             - ./vendor/bin/phpunit
-      env_vars:
-        - name: APP_ENV
-          value: local
+      env_vars: []
     dependencies:
       - install dependencies
   - name: Run Browser tests
