@@ -37,6 +37,8 @@ blocks:
       env_vars:
         - name: DB_NAME
           value: forge
+        - name: APP_ENV
+          value: local
     dependencies:
       - Install Dependencies
   - name: Run Browser tests
