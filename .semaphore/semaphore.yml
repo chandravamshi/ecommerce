@@ -91,4 +91,5 @@ blocks:
             - mysql --host=0.0.0.0 -uroot -e "show databases" | grep $DB_NAME
             - 'php artisan migrate:fresh'
             - 'php artisan dusk:chrome-driver 79'
+            - php artisan serve --env=dusk.local --port=8010 &
             - php artisan dusk
