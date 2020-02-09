@@ -43,30 +43,6 @@ blocks:
           value: local
     dependencies:
       - Install Dependencies
-  - name: Run Browser tests
-    task:
-      jobs:
-        - name: laravel dus
-          commands:
-            - checkout
-            - cp .env.example .env
-            - sem-service start mysql
-            - sudo apt-get install -y -qq mysql-client
-            - mysql --host=0.0.0.0 -uroot -e "create database $DB_NAME"
-            - mysql --host=0.0.0.0 -uroot -e "show databases" | grep $DB_NAME
-            - touch database/database.mysql
-            - cache restore
-            - 'php artisan dusk:install '
-            - 'php artisan dusk:chrome-driver '
-            - php artisan serve --env=dusk.local --port=8010 &
-            - php artisan dusk
-      env_vars:
-        - name: DB_NAME
-          value: ecommerce
-        - name: APP_ENV
-          value: local
-    dependencies:
-      - Run Unit tests
   - name: Run Security Tests
     task:
       jobs:
@@ -78,4 +54,4 @@ blocks:
             - composer install
             - 'php security-checker security:check ../composer.lock'
     dependencies:
-      - Run Browser tests
+      - Run Unit tests
