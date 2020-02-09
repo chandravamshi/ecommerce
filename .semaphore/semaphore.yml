@@ -74,10 +74,10 @@ blocks:
       - Unit tests
     task:
       env_vars:
+        - name: APP_ENV
+          value: local
         - name: DB_NAME
           value: ecommerce
-        - name: 'APP_ENV '
-          value: 'local '
       jobs:
         - name: laravel dusk
           commands:
