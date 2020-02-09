@@ -29,16 +29,10 @@ blocks:
           commands:
             - checkout
             - cache restore
-            - touch database/database.sqlite
+            - touch database/database.mysql
             - sem-service start mysql
             - ./vendor/bin/phpunit
-      env_vars:
-        - name: DB_USERNAME
-          value: root
-        - name: DB_PASSWORD
-          value: ''
-        - name: DB_NAME
-          value: ecommerce
+      env_vars: []
     dependencies:
       - Install Dependencies
   - name: Run Browser tests
