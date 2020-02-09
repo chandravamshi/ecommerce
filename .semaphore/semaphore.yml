@@ -52,8 +52,12 @@ blocks:
           value: local
         - name: DB_CONNECTION
           value: mysql
-        - name: 'DB_DATABASE '
-          value: 'ecommerce '
+        - name: DB_HOST
+          value: localhost
+        - name: DB_PORT
+          value: '3306'
+        - name: DB_DATABASE
+          value: ecommerce
         - name: DB_USERNAME
           value: root
         - name: DB_PASSWORD
