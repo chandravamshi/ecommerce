@@ -55,6 +55,7 @@ class UserServiceTest extends TestCase
         // $updatedUser = User::where('id', 2)->first();
         $serviceResponse = $service->deleteUser($createdUser, ['email' => 'new@email.com']);
         $this->assertTrue($serviceResponse);
+        
         $this->assertCount(0, User::all());
     }
 
