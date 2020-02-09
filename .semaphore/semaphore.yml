@@ -50,7 +50,11 @@ blocks:
           commands:
             - checkout
             - cache restore
-            - cp .env.example .env
+            - sem-service start mysql
+            - sudo apt-get install -y -qq mysql-client
+            - mysql --host=0.0.0.0 -uroot -e "create database $DB_NAME"
+            - mysql --host=0.0.0.0 -uroot -e "show databases" | grep $DB_NAME
+            - 'php artisan migrate:fresh'
             - php artisan serve --env=dusk.local --port=8010 &
             - php artisan dusk
       env_vars:
