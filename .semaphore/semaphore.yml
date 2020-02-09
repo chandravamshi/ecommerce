@@ -9,7 +9,7 @@ blocks:
     task:
       env_vars:
         - name: APP_ENV
-          value: prod
+          value: local
       jobs:
         - name: composer
           commands:
@@ -65,3 +65,7 @@ blocks:
             - '# Run the PHP Copy Paste Detector from online repository.'
             - 'curl -L https://phar.phpunit.de/phpcpd.phar -o phpcpd.phar'
             - php phpcpd.phar app/ --min-lines=50
+      prologue:
+        commands:
+          - checkout
+          - cache restore
