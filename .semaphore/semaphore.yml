@@ -25,14 +25,23 @@ blocks:
   - name: Run Unit tests
     task:
       jobs:
-        - name: phpunit
+        - name: create database
+          commands:
+            - sem-service start mysql
+            - sudo apt-get install -y -qq mysql-client
+            - mysql --host=0.0.0.0 -uroot -e "create database $DB_NAME"
+            - mysql --host=0.0.0.0 -uroot -e "show databases" | grep $DB_NAME
+            - sem-service status mysql
+        - name: php unit
           commands:
             - checkout
             - cache restore
-            - touch database/database.mysql
             - sem-service start mysql
+            - php artisan migrate
             - ./vendor/bin/phpunit
-      env_vars: []
+      env_vars:
+        - name: DB_NAME
+          value: forge
     dependencies:
       - Install Dependencies
   - name: Run Browser tests
