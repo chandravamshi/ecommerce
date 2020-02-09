@@ -16,6 +16,9 @@ blocks:
             - checkout
             - cache restore
             - sudo apt-get update && sudo apt-get install -y libpq-dev
+            - sudo apt-get update
+            - sudo apt-get install mysql-server
+            - sudo systemctl start mysql
             - composer install
             - npm install
             - cache store
