@@ -37,6 +37,8 @@ blocks:
           value: root
         - name: DB_PASSWORD
           value: ''
+        - name: DB_NAME
+          value: ecommerce
     dependencies:
       - Install Dependencies
   - name: Run Browser tests
