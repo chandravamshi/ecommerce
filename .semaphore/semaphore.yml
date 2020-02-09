@@ -46,6 +46,7 @@ blocks:
             - touch database/database.sqlite
             - cache restore
             - 'php artisan key:generate'
+            - start mysql
             - ./vendor/bin/phpunit
       env_vars:
         - name: APP_ENV
