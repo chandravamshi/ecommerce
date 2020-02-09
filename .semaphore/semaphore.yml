@@ -46,6 +46,9 @@ blocks:
             - touch database.mysql
             - cache restore
             - 'php artisan key:generate'
+            - sudo mkdir /var/mysql
+            - cd /var/mysql
+            - sudo ln -s /var/mysql/mysql.sock
             - ./vendor/bin/phpunit
       env_vars:
         - name: APP_ENV
