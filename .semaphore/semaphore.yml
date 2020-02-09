@@ -51,16 +51,13 @@ blocks:
             - checkout
             - cache restore
             - cp .env.example .env
-            - touch database/database.sqlite
-            - cache restore
-            - 'php artisan key:generate'
             - php artisan serve --env=dusk.local --port=8010 &
             - php artisan dusk
       env_vars:
-        - name: APP_ENV
-          value: local
         - name: DB_NAME
           value: forge
+        - name: APP_ENV
+          value: local
     dependencies:
       - Run Unit tests
   - name: Run Security Tests
