@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" content="MzI9VgxzLRNJKgEnT34uIGg3Kk53EAAAIYN4bCGCbIya67fSQbhv/g==" csrf-param="_csrf_token" method-param="_method" name="csrf-token">
+  <!-- assets path; useful for JS apps -->
+  <meta name="assets-path" content="https://storage.googleapis.com/semaphore-design/release-ea43aa5">
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+
+  <!-- Javascript includes -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.0.22/webcomponents-hi-ce.js"></script>
+  <script src="https://dagrejs.github.io/project/dagre-d3/latest/dagre-d3.min.js"></script>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!--
+      We are making sure about two things here:
+
+      1. Sentry is the first thing to load.
+      2. Sentry is isolated in its own little script bubble.
+         If it fails, it won't affect the rest of the app.
+    -->
+    <script src="https://browser.sentry-cdn.com/5.6.3/bundle.min.js" integrity="sha384-/Cqa/8kaWn7emdqIBLk3AkFMAHBk0LObErtMhO+hr52CntkaurEnihPmqYj3uJho" crossorigin="anonymous"></script>
+
+    <script>
+      Sentry.init({ dsn: 'https://b94d0e423d374c6eb0252af3fac38a66@sentry.io/1723375' });
+    </script>
+
+    <!-- Smartlook integration -->
+    <script type='text/javascript'>
+      window.smartlook||(function(d) {
+        var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
+        var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
+        c.charset='utf-8';c.src='https://rec.smartlook.com/recorder.js';h.appendChild(c);
+      })(document);
+      smartlook('init', 'ae1d402794454467c0808988392e2675aa4b5320');
+    </script>
+      <script>
+        smartlook('identify', '774750f2-db3b-4b38-b6cf-840c1cea6e87');
+      </script>
+
+
+  <!-- start Mixpanel -->
+  <script type="text/javascript">(function(c,a){if(!a.__SV){var b=window;try{var d,m,j,k=b.location,f=k.hash;d=function(a,b){return(m=a.match(RegExp(b+"=([^&]*)")))?m[1]:null};f&&d(f,"state")&&(j=JSON.parse(decodeURIComponent(d(f,"state"))),"mpeditor"===j.action&&(b.sessionStorage.setItem("_mpcehash",f),history.replaceState(j.desiredHash||"",c.title,k.pathname+k.search)))}catch(n){}var l,h;window.mixpanel=a;a._i=[];a.init=function(b,d,g){function c(b,i){var a=i.split(".");2==a.length&&(b=b[a[0]],i=a[1]);b[i]=function(){b.push([i].concat(Array.prototype.slice.call(arguments,
+0)))}}var e=a;"undefined"!==typeof g?e=a[g]=[]:g="mixpanel";e.people=e.people||[];e.toString=function(b){var a="mixpanel";"mixpanel"!==g&&(a+="."+g);b||(a+=" (stub)");return a};e.people.toString=function(){return e.toString(1)+".people (stub)"};l="disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split(" ");
+  for(h=0;h<l.length;h++)c(e,l[h]);var f="set set_once union unset remove delete".split(" ");e.get_group=function(){function a(c){b[c]=function(){call2_args=arguments;call2=[c].concat(Array.prototype.slice.call(call2_args,0));e.push([d,call2])}}for(var b={},d=["get_group"].concat(Array.prototype.slice.call(arguments,0)),c=0;c<f.length;c++)a(f[c]);return b};a._i.push([b,d,g])};a.__SV=1.2;b=c.createElement("script");b.type="text/javascript";b.async=!0;b.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?
+  MIXPANEL_CUSTOM_LIB_URL:"file:"===c.location.protocol&&"//cdn4.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn4.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn4.mxpnl.com/libs/mixpanel-2-latest.min.js";d=c.getElementsByTagName("script")[0];d.parentNode.insertBefore(b,d)}})(document,window.mixpanel||[]);
+    mixpanel.init("55ed93c1d9a1bd7e8a14012e48575851");
+  </script>
+  <!-- end Mixpanel -->
+
+  <script>
+
+  window.mixpanelData = {"organization":"chandravamshi","name":"chandravamshi","email":"dasyamchandu@gmail.com","company":"Chandravamshi"}
+  mixpanel.people.set({
+    name: window.mixpanelData.name,
+    email: window.mixpanelData.email,
+    company: window.mixpanelData.company
+  });
+  mixpanel.people.union("organizations", window.mixpanelData.organization);
+  mixpanel.identify(window.mixpanelData.email);
+  mixpanel.register(window.mixpanelData);
+  mixpanel.track("Landed");
+  </script>
+
+  <script src="/projects/js/app.js"></script>
+  <script>
+    window.App = require("js/app").App
+  </script>
+
+  <!-- Semaphore CSS -->
+  <link rel="stylesheet" media="screen" href="https://storage.googleapis.com/semaphore-design/release-ea43aa5/css/app-semaphore-min.css" />
+  <link rel="stylesheet" media="screen" href="/projects/css/app.css" />
+
+  <!-- Favicons for all platforms -->
+  <link rel="apple-touch-icon" sizes="180x180" href="https://storage.googleapis.com/semaphore-design/release-ea43aa5/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://storage.googleapis.com/semaphore-design/release-ea43aa5/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://storage.googleapis.com/semaphore-design/release-ea43aa5/images/favicon-16x16.png">
+  <link rel="manifest" href="https://storage.googleapis.com/semaphore-design/release-ea43aa5/images/site.webmanifest">
+  <link rel="mask-icon" href="https://storage.googleapis.com/semaphore-design/release-ea43aa5/images/safari-pinned-tab.svg" color="#00d477">
+  <link rel="shortcut icon" href="https://storage.googleapis.com/semaphore-design/release-ea43aa5/images/favicon.ico">
+  <meta name="msapplication-TileColor" content="#00d477">
+  <meta name="msapplication-config" content="https://storage.googleapis.com/semaphore-design/release-ea43aa5/images/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+
+  <title>Edit workflow・master・ecommerce・Chandravamshi</title>
+</head>
+  <body class="bg-lightest-brown-to-white">
+
+
+
+
+  
+    
+  
+
+
+<div class="bg-lightest-brown bb b--lighter-gray pa3 h3 flex justify-between">
+
+  <div class="flex">
+    <div class="profile-menu mr2">
+      <div class="h2 pointer shadow-1 br2 mr2 inline-flex items-center">
+
+        <img src="https://storage.googleapis.com/semaphore-design/release-7dcce2b/images/org-c.svg" class="db w2 br2 br--left">
+        <div class="dark-gray bg-white br2 br--right h2 ph2 pv1 b truncate">
+          Chandravamshi
+          <img src="https://storage.googleapis.com/semaphore-design/release-6ec82ef/images/icn-updown.svg" class="ml1">
+        </div>
+
+        <div id="profileMenu">
+
+          
+            <div class="hide-child flex items-center justify-between ph3 pv2 bb b--lighter-gray">
+              <a href="https://chandravamshi.semaphoreci.com" class="link flex-auto dark-gray underline-hover pv1 truncate">
+                <div class="flex items-center">
+                  <img src="https://storage.googleapis.com/semaphore-design/release-7dcce2b/images/org-c.svg" class="db mr2 w2 br-100">
+                  <span class="f4 b truncate">Chandravamshi</span>
+                </div>
+              </a>
+
+            </div>
+          
+
+          <div class="flex items-center justify-between ph3 pv2 bb b--lighter-gray">
+            <a href="https://billing.semaphoreci.com/new" class="link flex-auto dark-gray underline-hover pv1 truncate">
+              <div class="flex items-center">
+                <img src="https://storage.googleapis.com/semaphore-design/release-6ec82ef/images/org-new.svg" class="db mr2 w2 br-100">
+                <span class="f5 b">New…</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- Personal Settings -->
+          <div class="pa3 bg-washed-gray br2 br--bottom">
+            <div class="mb3">
+              Manage your Semaphore account and find your API token here
+            </div>
+
+            <div class="flex items-center mb3">
+              <img src="https://gravatar.com/avatar/4e389e23fecdfa9bdb39b700b798c863.png?d=mm&s=48" class="db mr2 w2 br-100">
+              <div>
+                <div class="f4 b">
+                  <a href="https://me.semaphoreci.com/account" class="link dark-gray underline-hover">My Account</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="f5 pt3 bt b--lighter-gray">
+              <div class="flex items-center">
+                <img src="https://storage.googleapis.com/semaphore-design/release-6ec82ef/images/icn-logout.svg" class="mr2 o-50">
+                <a href="https://id.semaphoreci.com/users/sign_out" class="link db gray underline-hover">Log out of Semaphore</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Help Menu -->
+  <div class="flex items-center flex-shrink-0 bg-lightest-brown">
+
+    <div class="flex">
+      <a href="https://docs.semaphoreci.com" class="link flex items-center ml3 pointer o-50 hover-o-100 br b--black-20 pr3" target="_blank">
+        <img src="https://storage.googleapis.com/semaphore-design/release-6ec82ef/images/icn-sheet.svg" alt="List" class="db">
+        <span class="dn db-l f5 fw5 black-90 ml1">Docs</span>
+      </a>
+    </div>
+
+    <div class="flex pr3">
+      <a href="https://chandravamshi.semaphoreci.com/support" class="link flex items-center ml3 pointer o-50 hover-o-100 br b--black-20 pr3">
+        <img src="https://storage.googleapis.com/semaphore-design/release-6ec82ef/images/icn-help.svg" alt="Life belt" class="db">
+        <span class="dn db-l f5 fw5 black-90 ml1">Support</span>
+      </a>
+    </div>
+
+    <!-- Semaphore menu -->
+    <div class="semaphore-menu pointer">
+      <svg id="semaphore-logo" class="db" width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <path id="semaphore-logo-top" d="M4.66603197,23.7871246 C4.41082593,23.8485976 4.09507832,23.7163375 3.96188685,23.491868 C3.96188685,23.491868 3.42539534,22.6163436 3.10778491,21.917787 C2.7911059,21.2220245 2.48374097,20.2449766 2.48374097,20.2449766 C2.39991417,19.9972219 2.5079576,19.674023 2.72125023,19.5212719 L4.45646497,18.2824981 C4.67068901,18.1316099 4.8159888,17.7981655 4.78432089,17.5401652 C4.78432089,17.5401652 4.68838578,16.8788649 4.67441465,16.3107055 C4.66044351,15.7518602 4.72098509,15.1063938 4.72098509,15.1063938 C4.73961327,14.8455994 4.57661671,14.5224005 4.3549414,14.3817577 L2.55452804,13.238919 C2.33378414,13.0973449 2.20990676,12.7797345 2.27883101,12.5273227 C2.27883101,12.5273227 2.53496845,11.5335094 2.81625394,10.8200502 C3.09753942,10.106591 3.58746049,9.20685001 3.58746049,9.20685001 C3.70854364,8.97772343 4.01590857,8.82962941 4.27297742,8.87806268 L6.3686474,9.26552877 C6.62571625,9.31396203 6.96661189,9.18635901 7.13240267,8.98424329 C7.13240267,8.98424329 7.57016485,8.42167233 7.99861293,7.99136142 C8.47642569,7.51448008 9.14797149,7.00593083 9.14797149,7.00593083 C9.35288144,6.8447971 9.48327868,6.50483285 9.44043387,6.24590119 L9.08836132,4.14557417 C9.04551651,3.8866425 9.19826757,3.58114039 9.4329826,3.46564569 C9.4329826,3.46564569 10.3411063,2.99062716 11.0601539,2.72051858 C11.7782702,2.45041001 12.7720834,2.21103793 12.7720834,2.21103793 C13.0254266,2.14863353 13.3402428,2.27623655 13.4780914,2.5016375 L14.5920564,4.31788481 C14.7289735,4.54142294 15.0521724,4.70907654 15.311104,4.694174 C15.311104,4.694174 15.8829891,4.64946637 16.4045781,4.66623173 C16.942001,4.68485991 17.5408969,4.77241234 17.5408969,4.77241234 C17.7998286,4.80501165 18.1323415,4.66064328 18.286024,4.44641923 L19.5247978,2.7112045 C19.6775488,2.49698045 20.0016791,2.38986843 20.2494339,2.47276382 C20.2494339,2.47276382 21.2274132,2.78012875 21.9259699,3.099602 C22.6245265,3.41628102 23.4972567,3.95277253 23.4972567,3.95277253 C23.7207948,4.08503259 23.8530548,4.39984879 23.7915819,4.65505482 L23.3500941,6.49738158 C23.2569532,6.87925922 22.9589023,7.41388792 22.6822739,7.69144777 L18.0941538,12.2926076 C16.4735023,11.3984551 14.3964605,11.6387586 13.021701,13.0135181 C11.6469415,14.3873462 11.4075694,16.4662508 12.3017219,18.0859708 L7.70708195,22.6815422 C7.42765929,22.9591021 6.893962,23.2590157 6.51208436,23.348431 L4.66510056,23.7861932 L4.66603197,23.7871246 Z"></path>
+      <path id="semaphore-logo-bottom"    d="M27.4026541,8.26798986 C27.6578601,8.20744828 27.9745391,8.33877694 28.1067992,8.56324647 C28.1067992,8.56324647 28.6442221,9.43877082 28.9636954,10.1373275 C29.2803744,10.8330899 29.5877393,11.8101378 29.5877393,11.8101378 C29.6687719,12.0578926 29.5625913,12.3810915 29.3483672,12.5338425 L27.6131525,13.7726163 C27.3989284,13.9235046 27.2545601,14.2569489 27.2871594,14.5149492 C27.2871594,14.5149492 27.3821631,15.1762495 27.3970656,15.7444089 C27.4110368,16.3032542 27.3504952,16.9487206 27.3504952,16.9487206 C27.331867,17.2095151 27.4939322,17.532714 27.7156075,17.6733567 L29.5132266,18.8189896 C29.7349019,18.958701 29.8597107,19.27538 29.7907864,19.5268604 C29.7907864,19.5268604 29.534649,20.5216051 29.2533635,21.2359957 C28.972078,21.9485235 28.4830884,22.847333 28.4830884,22.847333 C28.3620052,23.0801852 28.0546403,23.2273478 27.79664,23.1789146 L25.7028329,22.7914485 C25.4448326,22.744878 25.103937,22.8715497 24.9390776,23.0736654 C24.9390776,23.0736654 24.5013154,23.6371678 24.0728673,24.0665472 C23.5950546,24.54436 22.9235088,25.0538407 22.9235088,25.0538407 C22.7185988,25.214043 22.5863388,25.5530758 22.630115,25.8120075 L22.9821875,27.9132659 C23.0268952,28.1712662 22.8732127,28.4767683 22.6403605,28.5931944 C22.6403605,28.5931944 21.730374,29.0682129 21.010395,29.3383215 C20.2932101,29.6056358 19.2966026,29.8440765 19.2966026,29.8440765 C19.0451222,29.9092751 18.730306,29.7788779 18.5933889,29.5553398 L17.4794239,27.7390924 C17.3425068,27.5155543 17.0183765,27.3479007 16.7594448,27.3618719 C16.7594448,27.3618719 16.1875598,27.4084423 15.6659708,27.3898141 C15.1285479,27.3730488 14.529652,27.2854963 14.529652,27.2854963 C14.2707203,27.2519656 13.9382073,27.3972654 13.7845249,27.6114894 L12.5457511,29.3457728 C12.393,29.5599968 12.0688697,29.6671088 11.821115,29.5851448 C11.821115,29.5851448 10.8431356,29.2777799 10.144579,28.9592381 C9.44415951,28.6397648 8.57142939,28.1042047 8.57142939,28.1042047 C8.34789126,27.9691504 8.21749402,27.6552657 8.27803559,27.4000596 L8.72045481,25.5577329 C8.8135957,25.1758552 9.11164654,24.6402951 9.38827498,24.3627353 L13.9754637,19.7615754 C15.5961151,20.6557279 17.6731569,20.4163559 19.0479164,19.0415963 C20.4217445,17.6677683 20.662048,15.5888636 19.7678955,13.9691436 L24.3634669,9.37450361 C24.6410268,9.09694376 25.1756555,8.79889292 25.5584645,8.70761485 L27.4026541,8.26985268 L27.4026541,8.26798986 Z"></path>
+      </g>
+      </svg>
+
+      <div id="semaphoreMenu">
+        <div class="bb b--lighter-gray">
+          <a href="https://docs.semaphoreci.com" class="link db dark-gray hover-bg-washed-gray ph3 pt3 pb2 br2 br--top">
+            <div class="fw5">Documentation 2.0</div>
+            <div class="f6 gray">
+            Complete reference & example setup
+            </div>
+          </a>
+        </div>
+
+        <div class="bb b--lighter-gray">
+          <a href="https://status.semaphoreci.com" class="link db dark-gray hover-bg-washed-gray ph3 pv2">
+            <div class="fw5">Status</div>
+            <div class="f6 gray">
+              System health
+            </div>
+          </a>
+        </div>
+
+        <div class="bb b--lighter-gray">
+          <a href="https://docs.semaphoreci.com/article/113-changelog" class="link db dark-gray hover-bg-washed-gray ph3 pv2">
+            <div class="fw5">Changelog</div>
+            <div class="f6 gray">
+            Latest product updates
+            </div>
+          </a>
+        </div>
+
+        <div class="bb b--lighter-gray">
+          <a href="https://semaphoreci.com/learn/class" class="link db dark-gray hover-bg-washed-gray ph3 pv2">
+            <div class="fw5">Semaphore Learn</div>
+            <div class="f6 gray">
+            Sign up for free product training
+            </div>
+          </a>
+        </div>
+
+        <div class="bb b--lighter-gray">
+          <div class="db dark-gray hover-bg-washed-gray ph3 pv2 pointer" data-micromodal-trigger="modal-2">
+            <div class="fw5">Getting Started Tour</div>
+            <div class="f6 gray">
+              A quick overview of Semaphore
+            </div>
+          </div>
+        </div>
+
+        <div class="">
+          <a href="https://twitter.com/semaphoreci" class="link db dark-gray hover-bg-washed-gray ph3 pt2 pb3 br2 br--bottom">
+              <div class="fw5">Twitter @semaphoreci</div>
+
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="modal" id="modal-2" aria-hidden="true">
+  <div class="modal-overlay pa3" tabindex="-1" data-micromodal-close>
+    <div class="modal-content mw8 w-100" role="dialog" aria-modal="true" aria-labelledby="modal-2-title">
+      <div class="flex pr4-m br3" style="background-color: #ffeab0">
+
+        <div class="flex-auto">
+          <div id="js-scroll-container" class="f4 f3-m pl3 pl4-m pb3 pb4-m pr3 pr4-m overflow-auto" style="height: 560px; scroll-behavior: smooth;">
+            <section class="pt3 pb4 pt4-m pb5-m bb b--black-15" id="welcome">
+              <h2 class="f3 f2-m mb3">We’re so glad you’re here!</h2>
+              <div class="nl4 nr4 mv4">
+                <img src="https://storage.googleapis.com/semaphore-design/release-6ec82ef/images/tour-intro-ill.png" width="782" alt="girl greeting visitors">
+              </div>
+              <p class="measure">Semaphore is a hosted continuous integration and delivery service, built for speed and simplicity. We’re here to make you and your team more productive.</p>
+              <div class="flex-m items-center justify-between mt4">
+                <a href="#pipelines-blocks-jobs" class="btn btn-primary mr2">Start a 5-minute tour ↓</a>
+                <div class="f5 black-50 hover-dark-gray underline pointer mt3 mt0-m" data-micromodal-close>Not this time, just let me in</div>
+              </div>
+            </section>
+
+            <section class="pt3 pb4 pt4-m pb5-m bb b--black-15" id="pipelines-blocks-jobs">
+              <h2 class="f3 f2-m mb3">Pipelines, Blocks, Jobs</h2>
+              <p class="measure-narrow">The basic building block is a pipeline:</p>
+              <div class="nl2 mb3">
+                <img src="https://storage.googleapis.com/semaphore-design/release-6ec82ef/images/tour-pipeline-simple.png" width="550" alt="simple Semaphore pipeline">
+              </div>
+              <p class="measure-narrow">Pipelines are made of sequential blocks. Each block may contain a single job, or multiple parallel jobs.</p>
+              <p class="measure-narrow">For more advanced use cases, pipelines may also run in parallel and depend on each other.</p>
+              <div class="nl2 mb3 nt5">
+                <img src="https://storage.googleapis.com/semaphore-design/release-6ec82ef/images/tour-pipeline-complex.png" width="718" alt="complex Semaphore pipeline">
+              </div>
+            </section>
+
+            <section class="pt3 pb4 pt4-m pb5-m bb b--black-15" id="promotions">
+              <h2 class="f3 f2-m mb3">Promotions</h2>
+              <p class="measure-narrow">Model your continuous delivery process by connecting pipelines with promotions.</p>
+              <div class="nl4 mb3">
+                <img src="https://storage.googleapis.com/semaphore-design/release-6ec82ef/images/tour-promotion.png" width="596" alt="Semaphore promotion">
+              </div>
+              <p class="measure-narrow">Promotions can be triggered manually or automatically on certain conditions, like pipeline result, Git branch or tag.</p>
+              <p class="measure-narrow">There’s no limit in how many pipelines and promotions your workflow can have.</p>
+            </section>
+
+            <section class="pt3 pb4 pt4-m pb5-m bb b--black-15" id="workflow-builder">
+              <h2 class="f3 f2-m mb3">Workflow Builder</h2>
+              <p class="measure-narrow">Semaphore configuration lives in YAML files in the <code class="f4 bg-white ph1 br2 shadow-1">.semaphore</code> directory of your Git repository.</p>
+              <p class="measure-narrow">Further chapters of this tour will show you some snippets of YAML for illustrative purposes. But, we know that writing YAML from scratch is hard.</p>
+              <p class="measure-narrow">So Semaphore has a visual Workflow Builder so that you can easily create and edit configuration files for your project:</p>
+
+              <div class="nl1 mt4 mb3">
+                <img src="https://storage.googleapis.com/semaphore-design/release-6ec82ef/images/tour-editor.png" width="718" alt="Semaphore workflow builder">
+              </div>
+            </section>
+
+            <section class="pt3 pb4 pt4-m pb5-m bb b--black-15" id="agents">
+              <h2 class="f3 f2-m mb3">Agents</h2>
+              <p class="measure-narrow mb4">Agents specify the hardware and software entry point for your commands.</p>
+              <div class="flex nh4">
+                <div class="w-100 w-50-m ph4 pb2 br b--black-15">
+                  <p class="f5 measure-narrow"><strong>Hardware.</strong> Most projects will be fine with the default e1-standard-2 Linux (2vCPUs, 4GB RAM) and a1-standard-4 Mac (4 vCPUs, 8GB RAM) machine types.</p>
+                </div>
+                <div class="w-100 w-50-m ph4">
+                  <p class="f5 measure-narrow"><strong>Software.</strong> You can use Semaphore's Linux or macOS VMs with conveniently preinstalled software:</p>
+                </div>
+              </div>
+              <pre class="f5 bg-white pv2 ph3 br3 shadow-1">
+<span class="dark-green">agent</span>:
+    <span class="dark-green">machine</span>:
+        <span class="dark-green">type</span>: e1-standard-2
+        <span class="dark-green">os_image</span>: ubuntu1804
+<span class="dark-green">agent</span>:
+    <span class="dark-green">machine</span>:
+        <span class="dark-green">type</span>: a1-standard-4
+        <span class="dark-green">os_image</span>: macos-mojave</pre>
+
+              <p class="measure-narrow">Or you can run your own environment, defined with one or multiple Docker containers:</p>
+              <pre class="f5 bg-white pv2 ph3 br3 shadow-1">
+<span class="dark-green">agent</span>:
+    <span class="dark-green">machine</span>:
+    <span class="dark-green">type</span>: e1-standard-2
+    <span class="dark-green">containers</span>:
+        - <span class="dark-green">name</span>: main
+          <span class="dark-green">image</span>: semaphoreci/ruby:2.6.1
+        - <span class="dark-green">name</span>: cache
+          <span class="dark-green">image</span>: redis:5.0</pre>
+            </section>
+
+            <section class="pt3 pb4 pt4-m pb5-m bb b--black-15" id="caching">
+              <h2 class="f3 f2-m mb3">Caching</h2>
+              <p class="measure-narrow">Every job runs in a fresh, isolated virtual machine. Caching is a way to reuse project dependencies across pipeline stages</p>
+              <pre class="f5 bg-white pv2 ph3 br3 shadow-1">
+cache restore
+npm install
+bundle install --path .bundle
+cache store</pre>
+              <p class="measure-narrow">Cache is scoped per project and can store up to 9GB of files.</p>
+            </section>
+
+            <section class="pt3 pb4 pt4-m pb5-m bb b--black-15" id="artifacts">
+              <h2 class="f3 f2-m mb3">Artifacts</h2>
+              <p class="measure-narrow">Artifacts is permanent storage for files that you want to deliver to users or reference yourself later. For example:</p>
+              <ul class="relative">
+                <li>A binary of your app</li>
+                <li>A build of your static website</li>
+                <li>Screenshots and logs of failed tests</li>
+              </ul>
+              <div class="nl2 mb3">
+                <img src="https://storage.googleapis.com/semaphore-design/release-6ec82ef/images/tour-artifacts.png" width="660" alt="Semaphore artifacts storage">
+              </div>
+              <p class="measure-narrow">Semaphore also provides a Docker registry that’s private to your organization, to save you time and network bandwidth.</p>
+            </section>
+
+            <section class="pt3 pb4 pt4-m pb5-m bb b--black-15" id="secrets">
+              <h2 class="f3 f2-m mb3">Secrets</h2>
+              <p class="measure-narrow">Secrets help your CI/CD pipelines talk to the outside world.</p>
+              <p class="measure-narrow">It's a secure way of storing private information like API keys, or configuration files — things that shouldn't be committed to source control.</p>
+              <div class="nl2 mb3">
+                <img src="https://storage.googleapis.com/semaphore-design/release-6ec82ef/images/tour-secret.png" width="660" alt="Semaphore secret">
+              </div>
+              <p class="measure-narrow">Secrets are scoped to organization. Make them available by listing them within a pipeline or block:</p>
+              <pre class="f5 bg-white pv2 ph3 br3 shadow-1">
+<span class="dark-green">blocks</span>:
+  - <span class="dark-green">name</span>: Deploy
+    <span class="dark-green">task</span>:
+    <span class="dark-green">secrets</span>:
+      - <span class="dark-green">name</span>: deploy-secrets
+    <span class="dark-green">jobs</span>:
+        - <span class="dark-green">name</span>: Push to production
+        <span class="dark-green">commands</span>:
+        - echo "$CLOUD_ACCESS_KEY_ID"</pre>
+            </section>
+
+            <section class="pt3 pt4-m bb b--black-15" id="debugging">
+              <h2 class="f3 f2-m mb3">Debugging</h2>
+              <p class="measure-narrow">Sometimes your pipelines will fail, and at first you won't know why.</p>
+              <p class="measure-narrow">In that case debugging via SSH is a lifesaver.</p>
+              <p class="measure-narrow">Every job has a "Debug" button with instructions for installing the Semaphore CLI and SSH-ing into your job.</p>
+              <div class="nl4 mb3">
+                <img src="https://storage.googleapis.com/semaphore-design/release-6ec82ef/images/tour-debug.png" width="442" alt="Semaphore debug dialogue">
+              </div>
+              <p class="measure-narrow mb5">The CLI can do many more things, but we'll let you explore that later.</p>
+
+              <img src="https://storage.googleapis.com/semaphore-design/release-6ec82ef/images/tour-outro-ill.png" width="262" alt="Party whistle" class="db">
+            </section>
+
+            <section class="pt4 pb3">
+              <p>Congratulations, you've completed the tour!</p>
+              <div>
+                <button class="btn btn-primary" data-micromodal-close>Let’s set up your first project</button>
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <nav id="js-scroll-links" class="dn db-m flex-shrink-0 mt4 bl b--black-15" style="width: 210px">
+          <ul class="list f5 pl4 mb0">
+            <li class="mb1">
+              <a class="link dark-gray b" href="#welcome">1. Welcome</a>
+            </li>
+            <li class="mb1">
+              <a class="link dark-gray" href="#pipelines-blocks-jobs">2. Pipelines, Blocks, Jobs</a>
+            </li>
+            <li class="mb1">
+              <a class="link dark-gray" href="#promotions">3. Promotions</a>
+            </li>
+            <li class="mb1">
+              <a class="link dark-gray" href="#workflow-builder">4. Workflow Builder</a>
+            </li>
+            <li class="mb1">
+              <a class="link dark-gray" href="#agents">5. Agents</a>
+            </li>
+            <li class="mb1">
+              <a class="link dark-gray" href="#caching">6. Caching</a>
+            </li>
+            <li class="mb1">
+              <a class="link dark-gray" href="#artifacts">7. Artifacts</a>
+            </li>
+            <li class="mb1">
+              <a class="link dark-gray" href="#secrets">8. Secrets</a>
+            </li>
+            <li class="mb1">
+              <a class="link dark-gray" href="#debugging">9. Debugging</a>
+            </li>
+          </ul>
+        </nav>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/micromodal@0.4.2/dist/micromodal.min.js"></script>
+<script>
+	MicroModal.init({
+	disableScroll: true
+});
+</script>
+<script>
+	let mainNavLinks = document.querySelectorAll("#js-scroll-links ul li a");
+	let mainSections = document.querySelectorAll("#js-scroll-container section");
+	let mainContainer = document.getElementById('js-scroll-container');
+
+	let lastId;
+	let cur = [];
+
+	mainContainer.addEventListener("scroll", event => {
+		let fromTop = mainContainer.scrollTop;
+
+		mainNavLinks.forEach(link => {
+			let section = document.querySelector(link.hash);
+			let sectionTop = section.offsetTop - mainContainer.offsetTop;
+			let sectionBottom = sectionTop + section.offsetHeight;
+
+			if (sectionTop <= fromTop && sectionBottom > fromTop) {
+				link.classList.add("b");
+			} else {
+				link.classList.remove("b");
+			}
+		});
+	});
+</script>
+
+
+<script src="https://unpkg.com/tippy.js@2.5.2/dist/tippy.all.min.js"></script>
+<script>
+  // Profile menu
+  tippy('.profile-menu', {
+    arrow: true,
+    arrowType: 'round',
+    trigger: 'click',
+    duration: [100, 50],
+    html: document.querySelector('#profileMenu'),
+    theme: 'semaphore',
+    offset: '0, 6',
+    interactive: true,
+    maxWidth: '280px'
+  })
+	// Semaphore menu
+	tippy('.semaphore-menu', {
+		arrow: true,
+		arrowType: 'round',
+		trigger: 'click',
+		duration: [100, 50],
+		html: document.querySelector('#semaphoreMenu'),
+		theme: 'semaphore',
+		offset: '0, 5',
+		interactive: true,
+		maxWidth: '280px'
+	})
+</script>
+
+    <!-- codemirror promised that they will update their codebase to support ES6 -->
+    <!-- until than, this approach is the best -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.0/codemirror.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.0/codemirror.css">
+    <style>
+.code-mirror-style-semaphore.CodeMirror {
+  background: #fff;
+  color: #24292e;
+}
+
+.code-mirror-style-semaphore .CodeMirror-gutters {
+  background: #fff;
+  border-right-width: 1px;
+}
+
+.code-mirror-style-semaphore .CodeMirror-guttermarker {
+  color: white;
+}
+
+.code-mirror-style-semaphore .CodeMirror-guttermarker-subtle {
+  color: #d0d0d0;
+}
+
+.code-mirror-style-semaphore .CodeMirror-linenumber {
+  color: #959da5;
+  padding: 0 10px 0 20px;
+}
+
+.code-mirror-style-semaphore .CodeMirror-lines {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+  background: #fff;
+  line-height: 20px;
+}
+
+.code-mirror-style-semaphore .CodeMirror-line {
+  padding: 0 20px 0 10px;
+  color: #032f62;
+}
+
+.code-mirror-style-semaphore .cm-atom {
+  color: #22863a;
+}
+
+.code-mirror-style-semaphore .cm-string {
+  color: #032f62;
+}
+
+.CodeMirror-lint-markers {
+  width: 16px;
+}
+
+.CodeMirror-lint-marker-error {
+  background-position: center center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+  vertical-align: middle;
+  position: relative;
+
+  background: red;
+  border-radius: 50%;
+  width: 7px;
+  height: 7px;
+}
+
+.wf-edit-commit-table td:nth-child(1) {
+  width: inherit !important;
+  text-align: right;
+  color: rgba(0,0,0,.4);
+  padding-left: 12px;
+  padding-right: 0px;
+  border-right: 0px !important;
+}
+
+.wf-edit-commit-table td:nth-child(2) {
+  width: inherit !important;
+  text-align: right;
+  color: rgba(0,0,0,.4);
+  border-right: 1px solid rgba(0,0,0,.15);
+  padding-left: 6px;
+  padding-right: 12px;
+}
+
+.wf-edit-commit-table td:nth-child(3) {
+  width: 100%;
+  white-space: pre;
+}
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.0/mode/yaml/yaml.js"></script>
+
+    <script>
+window.InjectedDataByBackend = window.InjectedDataByBackend || {}
+window.InjectedDataByBackend.CanDismissAndExit = true
+
+window.InjectedDataByBackend.SecretNameList = [];
+
+window.InjectedDataByBackend.WorkflowData = {
+  createdInEditor: false,
+  initialYAML: ".semaphore/semaphore.yml",
+  yamls: {".semaphore/semaphore.yml":"version: v1.0\nname: Semaphore PHP Example Pipeline\nagent:\n  machine:\n    type: e1-standard-2\n    os_image: ubuntu1804\nblocks:\n  - name: Installing  Dependencies\n    task:\n      env_vars:\n        - name: APP_ENV\n          value: local\n      jobs:\n        - name: composer\n          commands:\n            - checkout\n            - cache restore\n            - sudo apt-get update && sudo apt-get install -y libpq-dev\n            - 'composer install '\n            - npm install\n            - cache store\n            - cp .env.example .env\n            - 'php artisan key:generate'\n    dependencies: []\n  - name: Unit tests\n    task:\n      jobs:\n        - name: unit test with user\n          commands:\n            - checkout\n            - cache restore\n            - sem-service start mysql\n            - sudo apt-get install -y -qq mysql-client\n            - mysql --host=0.0.0.0 -uroot -e \"create database $DB_NAME\"\n            - mysql --host=0.0.0.0 -uroot -e \"show databases\" | grep $DB_NAME\n            - 'php artisan migrate:fresh'\n            - ./vendor/bin/phpunit\n            - cache store\n      env_vars:\n        - name: DB_NAME\n          value: ecommerce\n        - name: APP_ENV\n          value: local\n    dependencies:\n      - Code Analysis\n  - name: Run Security Tests\n    task:\n      jobs:\n        - name: sensiolabs\n          commands:\n            - checkout\n            - 'git clone https://github.com/sensiolabs/security-checker.git'\n            - cd security-checker\n            - composer install\n            - 'php security-checker security:check ../composer.lock'\n    dependencies:\n      - Unit tests\n  - name: Code Analysis\n    dependencies:\n      - Installing  Dependencies\n    task:\n      jobs:\n        - name: phpcpd\n          commands:\n            - '# Run the PHP Copy Paste Detector from online repository.'\n            - 'curl -L https://phar.phpunit.de/phpcpd.phar -o phpcpd.phar'\n            - php phpcpd.phar app/ --min-lines=50\n"}
+};
+
+window.InjectedDataByBackend.CommitForm = {"DismissPath":"/workflows/5fa071b1-8892-4cf6-add5-2892af76e461","CommitPath":"/projects/ecommerce/commit_config","CheckWorkflowPath":"/projects/ecommerce/check_workflow","Branch":"master","Avatar":"https://gravatar.com/avatar/4e389e23fecdfa9bdb39b700b798c863.png?d=mm&s=48"};
+
+window.InjectedDataByBackend.MultiYAMLMode = true
+    </script>
+
+    <div class="ph3 pv2 bg-washed-gray bb b--lighter-gray">
+      <div class="breadcrumb">
+        <div class="breadcrumb-item">
+          <a href="/projects/ecommerce">ecommerce</a>
+        </div>
+
+        <div class="breadcrumb-item active">
+          Edit workflow <span class="code gray">(master)</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="workflow-editor-tabs" class="flex justify-between f5 bb b--lighter-gray bg-washed-gray pa3">
+    </div>
+
+    <div id="workflow-editor-visual-editor" class="bg-white relative">
+      <div class="flex">
+        <div class="flex-auto">
+
+          <!-- Workflow Container -->
+          <div id="workflow-editor-diagram" class="overflow-x-scroll overflow-y-none nowrap pl3 pt3 pr6 pb6">
+          </div>
+
+        </div>
+
+        <div id="workflow-editor-config-panel" class="f5 bg-white bl b--lighter-gray" style="position: absolute; right: 0; width: 360px; height: 642px;">
+
+          <!-- resize handler -->
+          <div data-resize="" style="width: 7px; height: 50px; position: absolute; left: -4px; top: calc(50% - 25px); background: white; border: 1px solid #d2d9d9; border-radius: 2px; cursor: col-resize;">
+            <div style="width: 1px; height: 44px; background: #d2d9d9; position: absolute; left: 2px; top: 2px; cursor: col-resize;"></div>
+          </div>
+
+          <div id="workflow-editor-config-panel-content" class="overflow-y-scroll">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div id="workflow-editor-code-editor" class="code-mirror-style-semaphore bg-white f5 lh-title">
+    </div>
+
+<script>require('js/app').App.workflow_editor()</script>  </body>
+</html>
