@@ -38,11 +38,11 @@ blocks:
         - name: DB_PORT
           value: '3306'
         - name: DB_DATABASE
-          value: ecommerce
+          value: forge
         - name: DB_USERNAME
-          value: root
+          value: forge
         - name: DB_PASSWORD
-          value: 'null'
+          value: ''
   - name: Run Browser tests
     task:
       jobs:
