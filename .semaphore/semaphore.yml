@@ -43,7 +43,7 @@ blocks:
           commands:
             - checkout
             - cp .env.example .env
-            - touch database/database.sqlite
+            - touch database.mysql
             - cache restore
             - 'php artisan key:generate'
             - ./vendor/bin/phpunit
