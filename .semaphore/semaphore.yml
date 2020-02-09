@@ -49,6 +49,7 @@ blocks:
             - sudo mkdir /var/mysql
             - cd /var/mysql
             - sudo ln -s /var/mysql/mysql.sock
+            - checkout
             - ./vendor/bin/phpunit
       env_vars:
         - name: APP_ENV
@@ -64,7 +65,7 @@ blocks:
         - name: DB_USERNAME
           value: root
         - name: DB_PASSWORD
-          value: ''''''
+          value: ''
     dependencies:
       - Run Code Analysis
   - name: Run Browser tests
