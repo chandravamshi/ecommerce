@@ -44,7 +44,7 @@ blocks:
   - name: Run Browser tests
     task:
       jobs:
-        - name: laravel dusk
+        - name: laravel dus
           commands:
             - checkout
             - cp .env.example .env
