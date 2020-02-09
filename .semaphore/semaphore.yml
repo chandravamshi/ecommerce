@@ -62,5 +62,6 @@ blocks:
       jobs:
         - name: phpcpd
           commands:
+            - '# Run the PHP Copy Paste Detector from online repository.'
             - 'curl -L https://phar.phpunit.de/phpcpd.phar -o phpcpd.phar'
             - php phpcpd.phar app/ --min-lines=50
