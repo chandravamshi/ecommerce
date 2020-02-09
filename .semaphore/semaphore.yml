@@ -27,6 +27,7 @@ blocks:
         - name: phpunit
           commands:
             - checkout
+            - touch database/database.sqlite
             - cache restore
             - ./vendor/bin/phpunit
       env_vars:
