@@ -16,7 +16,7 @@ blocks:
             - checkout
             - cache restore
             - sudo apt-get update && sudo apt-get install -y libpq-dev
-            - composer install --no-dev
+            - composer install
             - npm install
             - cache store
             - cp .env.example .env
@@ -33,7 +33,6 @@ blocks:
             - sudo apt-get install -y -qq mysql-client
             - mysql --host=0.0.0.0 -uroot -e "create database $DB_NAME"
             - mysql --host=0.0.0.0 -uroot -e "show databases" | grep $DB_NAME
-            - php artisan migrate
             - ./vendor/bin/phpunit
       env_vars:
         - name: DB_NAME
