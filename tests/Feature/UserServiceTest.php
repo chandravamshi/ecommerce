@@ -72,7 +72,6 @@ class UserServiceTest extends TestCase
     {
         $faker = Faker::create();
         return [
-          
           'email' => $faker->unique()->safeEmail,
           'password'  =>  '123456',
           'first_name'=>  $faker->name,
