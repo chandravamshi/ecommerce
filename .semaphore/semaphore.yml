@@ -27,22 +27,14 @@ blocks:
         - name: phpunit
           commands:
             - checkout
-            - touch database/database.sqlite
+            - touch database/database.mysql
             - cache restore
             - ./vendor/bin/phpunit
       env_vars:
-        - name: DB_CONNECTION
-          value: mysql
-        - name: DB_HOST
-          value: 127.0.0.1
-        - name: DB_PORT
-          value: '3306'
-        - name: DB_DATABASE
-          value: forge
-        - name: DB_USERNAME
-          value: forge
-        - name: DB_PASSWORD
-          value: ''
+        - name: DATABASE_MYSQL_USERNAME
+          value: root
+        - name: DATABASE_MYSQL_PASSWORD
+          value: semaphoredb
   - name: Run Browser tests
     task:
       jobs:
