@@ -84,6 +84,6 @@ blocks:
             - cache restore
             - 'php artisan key:generate'
             - 'php artisan dusk:install'
-            - 'php artisan dusk:chrome-driver --all'
+            - 'php artisan dusk:chrome-driver 79'
             - php artisan serve
             - php artisan dusk
