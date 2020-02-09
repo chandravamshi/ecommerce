@@ -51,6 +51,10 @@ blocks:
             - checkout
             - cp .env.example .env
             - sem-service start mysql
+            - sudo apt-get install -y -qq mysql-client
+            - mysql --host=0.0.0.0 -uroot -e "create database $DB_NAME"
+            - mysql --host=0.0.0.0 -uroot -e "show databases" | grep $DB_NAME
+            - 'php artisan migrate:fresh'
             - touch database/database.sqlite
             - cache restore
             - 'php artisan dusk:install '
@@ -59,7 +63,7 @@ blocks:
             - php artisan dusk
       env_vars:
         - name: DB_NAME
-          value: forge
+          value: ecommerce
         - name: APP_ENV
           value: local
     dependencies:
