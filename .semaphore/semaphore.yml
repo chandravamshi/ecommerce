@@ -15,6 +15,7 @@ blocks:
             - composer install
             - composer ins
             - composer up
+            - 'php artisan key:generate'
             - 'php artisan dusk:install'
             - npm install
             - 'export "PATH=./vendor/bin:${PATH}"'
