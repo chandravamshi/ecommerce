@@ -9,7 +9,7 @@ blocks:
     task:
       env_vars:
         - name: APP_ENV
-          value: prod
+          value: local
       jobs:
         - name: composer
           commands:
@@ -31,8 +31,10 @@ blocks:
             - sem-service start mysql
             - ./vendor/bin/phpunit
       env_vars:
-        - name: FOO_1
-          value: BAR_1
+        - name: DB_USERNAME
+          value: root
+        - name: DB_PASSWORD
+          value: ''
   - name: Run Browser tests
     task:
       jobs:
