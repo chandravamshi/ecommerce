@@ -83,7 +83,7 @@ blocks:
             - cp .env.example .env
             - cache restore
             - 'php artisan key:generate'
-            - 'composer require --dev staudenmeir/dusk-updater:"^1.1"'
-            - 'php artisan dusk:update --detect'
+            - 'php artisan dusk:install'
+            - 'php artisan dusk:chrome-driver --all'
             - php artisan serve
             - php artisan dusk
