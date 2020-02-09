@@ -29,11 +29,7 @@ blocks:
             - checkout
             - cache restore
             - ./vendor/bin/phpunit
-      env_vars:
-        - name: DATABASE_MYSQL_USERNAME
-          value: root
-        - name: DATABASE_MYSQL_PASSWORD
-          value: semaphoredb
+      env_vars: []
   - name: Run Browser tests
     task:
       jobs:
