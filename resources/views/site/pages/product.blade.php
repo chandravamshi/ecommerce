@@ -51,8 +51,8 @@
                                 <article class="p-5">
                                     <h3 class="title mb-3">{{ $product->name }}</h3>
                                     <dl class="row">
-                                        <dt class="col-sm-3">SKU</dt>
-                                        <dd class="col-sm-9">{{ $product->sku }}</dd>
+                                        <dt class="col-sm-3">description</dt>
+                                        <dd class="col-sm-9">{{ $product->description }}</dd>
                                         <dt class="col-sm-3">Weight</dt>
                                         <dd class="col-sm-9">{{ $product->weight }}</dd>
                                     </dl>
