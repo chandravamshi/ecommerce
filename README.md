@@ -66,6 +66,8 @@ In semaphore build I did
 ![ecommerce](https://travis-ci.com/chandravamshi/ecommerce.svg?branch=master)
 Travis CI is a hosted, distributed continuous integration service used to build and test projects hosted at GitHub. Travis CI automatically detects when a commit has been made and pushed to a GitHub repository that is using Travis CI, and each time this happens, it will try to build the project and run tests.
 
+![travis.ci](https://github.com/chandravamshi/ecommerce/blob/master/Advance%20Software%20Engineering/Screenshot%202020-02-14%20at%2011.50.40%20PM.png)
+
 
 # 7) IDE
 I’m using visual studio code because its simple and easy to use These are mac commands
@@ -81,6 +83,7 @@ My favourite commands are
 * Ctrl + r (for recent files)
 * Shift + cmd + up arrow(selects entire text above)
 * Shift + cmd + down arrow(selects entire text above)
+
 
 # 8) DSL
 I used sql domain specific language. 
