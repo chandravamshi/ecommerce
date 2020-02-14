@@ -9,6 +9,21 @@ Dear professor
 this is the complete code and github repository. I  have also done uml diagrams which you can find in the advanced software engineering folder in this repositroy, and I also did point number 7 in the task favourite ide and key board short cuts
 ,I also did  sonarcloud and travisci 
 
+
+# Admin Logged in and adding categories and brands and products and atrributes.
+
+![admin_categories](https://github.com/chandravamshi/ecommerce/blob/master/Advance%20Software%20Engineering/Screenshot%202020-02-14%20at%208.51.17%20PM.png)
+![admin_brand](https://github.com/chandravamshi/ecommerce/blob/master/Advance%20Software%20Engineering/Screenshot%202020-02-14%20at%208.52.21%20PM.png)
+![admin_product](https://github.com/chandravamshi/ecommerce/blob/master/Advance%20Software%20Engineering/Screenshot%202020-02-14%20at%208.53.58%20PM.png)
+![admin_attributes](https://github.com/chandravamshi/ecommerce/blob/master/Advance%20Software%20Engineering/Screenshot%202020-02-14%20at%209.07.40%20PM.png)
+* attributes are like for example iphone is available in different colors those colors are attributes.
+
+
+# User Logged in and seeing the available products.
+![user_seeing](https://github.com/chandravamshi/ecommerce/blob/master/Advance%20Software%20Engineering/Screenshot%202020-02-14%20at%209.34.12%20PM.png)
+![user_seeing](https://github.com/chandravamshi/ecommerce/blob/master/Advance%20Software%20Engineering/Screenshot%202020-02-14%20at%209.34.22%20PM.png)
+
+
 # 1) 3 Uml Diagrams
 ## uml class diagram
 ![class_uml](https://github.com/chandravamshi/ecommerce/blob/master/Advance%20Software%20Engineering/3%20uml%20diagrams%20/Uml_Class_Diagram.png)
