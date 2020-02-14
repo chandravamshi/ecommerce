@@ -1,13 +1,14 @@
 # Basic E-Commerce Application ![ecommerce](https://travis-ci.com/chandravamshi/ecommerce.svg?branch=master) [![Sonarcloud Status](https://sonarcloud.io/api/project_badges/measure?project=com.lapots.breed.judge:judge-rule-engine&metric=alert_status)](https://sonarcloud.io/dashboard?id=chandravamshi_ecommerce)
+![CI status badge](https://chandravamshi.semaphoreci.com/badges/ecommerce/branches/master.svg)
 
 
-A simple E-commerce Application using Laravel Framework
 
+
+A simple E-commerce Application using Laravel Framework.
 Here in this application we add can users, admins. Admins can add/edit/update/delete categories, brands, products, etc..,
 
-Dear professor 
-this is the complete code and github repository. I  have also done uml diagrams which you can find in the advanced software engineering folder in this repositroy, and I also did point number 7 in the task favourite ide and key board short cuts
-,I also did  sonarcloud and travisci 
+User can view the available products.
+
 
 
 # Admin Logged in and adding categories and brands and products and atrributes.
@@ -37,6 +38,8 @@ this is the complete code and github repository. I  have also done uml diagrams 
 # 2) SonarCloud
 [![Sonarcloud Status](https://sonarcloud.io/api/project_badges/measure?project=com.lapots.breed.judge:judge-rule-engine&metric=alert_status)](https://sonarcloud.io/dashboard?id=chandravamshi_ecommerce)
 
+SonarCloud is a cloud service offered by SonarSource and based on SonarQube. SonarQube is a widely adopted open source platform to inspect continuously the quality of source code and detect bugs, vulnerabilities and code smells in more than 20 different languages.
+
 # 3) Clean code development
 * To generate files I used command line commands which will create files with all functions.
      * for eg: ```php artisan make:model``` ProductsModel  this command will generate model file for products
@@ -45,7 +48,11 @@ this is the complete code and github repository. I  have also done uml diagrams 
 * Laravel uses mvc architecture so there is clean flow from routes - controllers - models - views.
 * used only crud operations .
 
-# 4) Build Management (Semaphore)
+# 4) Build Management (Semaphore) 
+![CI status badge](https://chandravamshi.semaphoreci.com/badges/ecommerce/branches/master.svg)
+
+![semaphore](https://github.com/chandravamshi/ecommerce/blob/master/Advance%20Software%20Engineering/Screenshot%202020-02-14%20at%2011.24.10%20PM.png)
+
 I used semaphore which is very easy and simple to understand.
 In semaphore build I did
 * (installing dependencies) where all the dependencies related to application are installed.
@@ -57,6 +64,7 @@ In semaphore build I did
 
 # 6) Continuous Delivery Travis.ci
 ![ecommerce](https://travis-ci.com/chandravamshi/ecommerce.svg?branch=master)
+Travis CI is a hosted, distributed continuous integration service used to build and test projects hosted at GitHub. Travis CI automatically detects when a commit has been made and pushed to a GitHub repository that is using Travis CI, and each time this happens, it will try to build the project and run tests.
 
 
 # 7) IDE
